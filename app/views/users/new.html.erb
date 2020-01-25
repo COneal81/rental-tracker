@@ -1,0 +1,24 @@
+<div class="form_fields">
+<h1> Signup </h1>
+      
+        <%= form_for :user, url: '/users' do |f| %>
+            
+            <%= f.label :name %>
+            <%= f.text_field :name %><br><br>
+            
+            <%= f.label :email %>
+            <%= f.email_field :email %> <br><br>
+            
+            <%= f.label :password %>
+            <%= f.password_field :password %><br><br>
+        
+            <%= f.label :password_confirmation %> 
+            <%= f.password_field :password_confirmation %><br><br>
+            
+            <%= f.submit "Create Account" %>
+
+        <% end %>
+</div>
+
+<%= button_to "Log In", new_session_path, :method => "get", class: "btn btn-info btn-block" %>
+      
