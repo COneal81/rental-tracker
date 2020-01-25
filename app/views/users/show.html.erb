@@ -1,1 +1,62 @@
 <h1> You have reached users show </h1>
+
+<%# <h1>Hello <%= current_user.email%>  </h1><br><br> %>
+
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-1 font-weight-normal">Rental Properties</h4>
+      </div>
+      
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li> <%= link_to "View All Properties", rental_properties_path%> </li>
+          <li> <%= link_to "Add a Property", new_rental_property_path%> </li>
+        </ul>
+       
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-1 font-weight-normal">Repairs</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+         <li> <%= link_to "View All Repairs", repairs_path%> </li>
+         <li> <%= link_to "Add a Repair", new_repair_path%> </li>
+        </ul>
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-1-font-weight-normal">Payments</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li> <%= link_to "View All Payments", payment_path%> </li>
+          <li> <%= link_to "Receive a Payment", new_payment_path%> </li>
+        </ul>
+      </div>
+
+
+      
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-1 font-weight-normal">Tenants</h4>
+      </div>
+      
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li> <%= link_to "View All Tenants", tenants_path%> </li>
+          <li> <%= link_to "Add a Tenant", new_tenant_path%> </li>
+        </ul>
+       
+      </div>
+  </div>
+
