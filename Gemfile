@@ -25,6 +25,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootstrap', '~> 4.4.1'
 gem 'sprockets-rails', '~> 3.2'
+gem 'jquery-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
