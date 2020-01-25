@@ -27,6 +27,8 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'sprockets-rails', '~> 3.2'
 gem 'jquery-rails'
 
+gem 'dotenv'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
