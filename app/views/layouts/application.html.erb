@@ -10,6 +10,14 @@
   </head>
 
   <body>
+      <%= render "partials/alerts" %>
+      <%= render "partials/nav" %>
+      <%= render 'partials/jumbotron' %>
+      <main role="main">
+      <div class="container">
     <%= yield %>
+      <hr>
+      </div>
   </body>
+  <%= render 'partials/footer' %>
 </html>
