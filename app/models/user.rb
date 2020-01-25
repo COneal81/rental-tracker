@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    #list associations
+    
     has_secure_password
 
     has_many :rental_properties
