@@ -1,0 +1,21 @@
+<div class="grid-container">
+
+<div class="grid-item">
+    
+    
+    <h2> Repair: <%= @repair.repair_name %> </h2><br>
+
+    <strong>Property Name:</strong> <%= @repair.rental_property.property_name %><br><br>
+    <strong>Property Address:</strong> <%= @repair.rental_property.address %><br><br>
+
+    <strong>Current Renter:</strong> <%= @repair.rental_property.tenant.renter %><br>
+    <strong>Current Renter:</strong> <%= @repair.rental_property.tenant.renter_cell_phone %><br><br>
+
+    <strong>Description:</strong> <%= @repair.repair_description %><br><br>
+    <strong>Repair Cost:</strong> $<%= @repair.repair_cost %><br><br>
+   
+    <strong>Repair Completed:</strong> <%= @repair.repair_completed %><br><br> 
+
+
+    
+</div>

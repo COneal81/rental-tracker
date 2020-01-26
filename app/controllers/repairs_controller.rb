@@ -11,6 +11,7 @@ class RepairsController < ApplicationController
 
     def create
        if @repair = Repair.create(repair_params)
+      
             #Flash message here
             redirect_to repair_path(@repair)
        else
@@ -27,7 +28,7 @@ class RepairsController < ApplicationController
 
     def repair_params
         params.require(:repair).permit(:repair_name, :repair_needed, 
-        :repair_description, :repair_cost, :repair_completed)
+        :repair_description, :repair_cost, :repair_completed, :rental_property_id)
     end
 
 end
