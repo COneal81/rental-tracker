@@ -1,0 +1,18 @@
+<div class="grid-container">
+
+<div class="grid-item">
+    <h1> <%= @rental_property.property_name %> </h1>
+    <%= image_tag @rental_property.image_url, :class => "image_url" %><br><br>
+
+    <strong>Description:</strong> <%= @rental_property.property_description %><br><br>
+    <strong>Address:</strong> <%= @rental_property.address %><br><br>
+    <strong>Square Feet:</strong> <%= @rental_property.square_feet %><br><br>
+    <strong>Monthly Rental Amount:</strong> $<%= @rental_property.monthly_rental_amount %><br><br> 
+
+    <strong>Deposit Amount:</strong> $<%= @rental_property.deposit_amount %><br><br>
+    <strong>Contract Start Date:</strong> <%= @rental_property.contract_start_date %><br><br> 
+    <strong>Contract End Date:</strong> <%= @rental_property.contract_end_date %><br><br> 
+    <strong>Leased:</strong> <%= @rental_property.leased %><br><br>
+    <strong>Leased to:</strong> <%= @rental_property.tenant.renter %><br><br>
+    
+</div>
