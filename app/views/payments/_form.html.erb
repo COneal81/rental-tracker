@@ -1,0 +1,24 @@
+<div>
+       
+        <h4> Select Tenant </h4>
+        
+        
+
+         <%= form_for(@payment) do |f| %>
+
+        <%= f.collection_select :tenants, Tenant.order(:renter), 
+        :id, :renter  , include_blank: true %> <br><br>
+        <%= f.collection_select :rental_properties, RentalProperty.order(:property_name), 
+        :id, :property_name  , include_blank: true %> <br><br>
+
+        
+        <strong><%= f.label :amount_owed %></strong>
+        <%= f.text_field :amount_owed, class:"form-control" %><br>
+
+        <strong><%= f.label :amount_paid %></strong>
+        <%= f.text_area :amount_paid, class:"form-control" %><br>
+
+        <%= f.submit submit_text %>
+        <% end %>
+        
+    </div>
