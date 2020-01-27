@@ -1,12 +1,12 @@
 <div class="btn-group" role="group" aria-label="Basic example">
-  <%= button_to "All Tenants", tenant_path(@tenant), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
-  <%= button_to "Payments", payment_path(@payment), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
-  <%= button_to "Repairs", repairs_path, :method=> "get", class: "btn btn-secondary btn-sm" %>
+  <%= button_to "All Tenants", rental_property_tenant_path(@rental_property.tenant), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+  <%= button_to "Payments", rental_property_payment_path(@rental_property.payment), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+  <%= button_to "Repairs", rental_property_repairs_path(@rental_property.repairs), :method=> "get", class: "btn btn-secondary btn-sm" %>
   #These link needs to be a nested route
 </div>
 
 <br><br>
-
+    
 <div class="container">
   <div class="card-deck mb-1 text-left">
     <div class="card mb-4 shadow-sm">
@@ -30,25 +30,4 @@
       </div>
     </div>
     
-    <div class="card mb-4 shadow-sm">
-      <div class="card-header">
-        <h4 class="my-1 font-weight-normal">Current Tenant</h4>
-      </div>
-      <div class="card-body">
-        <ul class="list-unstyled mt-3 mb-4">
-            <li><strong>Leased to:</strong> <%=link_to @rental_property.tenant.renter,  tenant_path(@tenant) %></li><br>
-            <li><strong>Last Payment Received:</strong> $<%=link_to @rental_property.payment.amount_paid,  payment_path(@payment)%></li><br>
-            <li><strong>Co Renter:</strong> <%= @tenant.co_renter %><br><br>
-            <li><strong>Current Address: </strong> <%= @tenant.address %> <br>
-            <li><strong>Previous Address:</strong> <%= @rental_property.tenant.address %><br><br>
-
-            <li><strong>Renter Email:</strong> <%= @tenant.renter_email %><br>
-            <li><strong>Co Renter Email:</strong> <%= @tenant.co_renter_email %><br><br>
-
-            <li><strong>Renter Cell Phone:</strong> <%= @tenant.renter_cell_phone %><br><br>
-            <li><strong>Co Renter Cell Phone:</strong> $<%= @tenant.co_renter_cell_phone %><br><br>
-        </ul>
-      </div>
-    </div>
-
-
+    
