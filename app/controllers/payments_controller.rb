@@ -1,4 +1,11 @@
 class PaymentsController < ApplicationController
+
+    before_action :logged_in?
+
+    def index
+        @payments = Payment.all 
+    end
+    
     def new 
         @payment = Payment.new
         @tenant_ = Tenant.pluck(:renter, :id)
