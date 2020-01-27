@@ -1,0 +1,28 @@
+<div>
+        <%= form_for(@tenant) do |f| %>
+        <strong><%= f.label :renter %></strong>
+        <%= f.text_field :renter, class:"form-control" %><br>
+
+        <strong><%= f.label :co_renter %></strong>
+        <%= f.text_area :co_renter, class:"form-control" %><br>
+
+        <strong><%= f.label :address %></strong>
+        <%= f.text_field :address, class:"form-control" %><br>
+
+        <strong><%= f.label :renter_email %></strong>
+        <%= f.text_field :renter_email, class:"form-control" %><br>
+
+        <strong><%= f.label :co_renter_email %></strong>
+        <%= f.text_field :co_renter_email, class:"form-control" %><br>
+
+        <strong><%= f.label :renter_cell_phone %></strong>
+        <%= f.text_field :renter_cell_phone, class:"form-control" %><br>
+
+        <strong><%= f.label :co_renter_cell_phone %></strong>
+        <%= f.text_field :co_renter_cell_phone, class:"form-control" %><br>
+
+        
+
+        <%= f.submit submit_text %>
+        <% end %>
+    </div>

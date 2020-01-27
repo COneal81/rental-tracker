@@ -1,0 +1,24 @@
+<div class="grid-container">
+
+<div class="grid-item">
+    
+    
+    <h2> Tenant: <%= @tenant.renter %> </h2><br>
+
+    <strong>Co Renter:</strong> <%= @tenant.co_renter %><br><br>
+    <strong>Current Address: </strong> <%= @tenant.address %> <br>
+    <strong>Previous Address:</strong> <%= @rental_property.tenant.address %><br><br>
+
+    <strong>Renter Email:</strong> <%= @tenant.renter_email %><br>
+    <strong>Co Renter Email:</strong> <%= @tenant.co_renter_email %><br><br>
+
+    <strong>Renter Cell Phone:</strong> <%= @tenant.renter_cell_phone %><br><br>
+    <strong>Co Renter Cell Phone:</strong> $<%= @tenant.co_renter_cell_phone %><br><br>
+   
+   
+
+
+    
+</div>
+
+<p> ADD EDIT AND DELETE BUTTONS FOR USER ONLY </p>
