@@ -3,10 +3,8 @@
 <div class="grid-item">
     
     
-    <h2> Payment: 
-
-<%= @payment.amount_owed %> </h2><br>
-
+    <h2> Payment: <%= @payment.amount_owed %> </h2><br>
+    <strong>Payment From:</strong> <%= @payment.tenants.renter %><br><br>
     <strong>Property Name:</strong> <%= @payment.amount_owed %><br><br>
     <strong>Property Address:</strong> <%= @payment.amount_paid %><br><br>
 
