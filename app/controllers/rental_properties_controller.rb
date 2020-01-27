@@ -1,4 +1,6 @@
 class RentalPropertiesController < ApplicationController
+    before_action :logged_in?
+
 
     def index
         @rental_properties = RentalProperty.all 
@@ -6,6 +8,8 @@ class RentalPropertiesController < ApplicationController
 
     def new 
         @rental_property = RentalProperty.new
+        @tenant = Tenant.pluck(:renter, :id)
+    
     end
 
     def create
@@ -21,8 +25,7 @@ class RentalPropertiesController < ApplicationController
 
     def show 
         @rental_property = RentalProperty.find(params[:id])
-        @tenant = Tenant.find(params[:id])
-        @payment = Payment.find(params[:id])
+        tenant = Tenant.find(params[:id])
     end
 
     def edit
