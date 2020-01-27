@@ -1,4 +1,7 @@
 class TenantsController < ApplicationController  
+
+    before_action :logged_in?
+
     def index
         @tenant = Tenant.all 
     end
