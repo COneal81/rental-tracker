@@ -15,3 +15,14 @@
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 
 @import "bootstrap";
+
+body {
+    background-image:url('/images/white-background.png');
+  }
+  .field_with_errors input {
+    border: 1px solid red;
+  }
+ 
+  a {
+    color: #449896;
+  }
