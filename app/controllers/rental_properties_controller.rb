@@ -21,6 +21,8 @@ class RentalPropertiesController < ApplicationController
 
     def show 
         @rental_property = RentalProperty.find(params[:id])
+        @tenant = Tenant.find(params[:id])
+        @payment = Payment.find(params[:id])
     end
 
     def edit
