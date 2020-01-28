@@ -1,5 +1,7 @@
-<h1> Login </h1>
+<center><h1> Sign In </h1>
      
+<h6> Need an account?   <%= link_to "Sign Up", new_user_path%></h6><br><br> 
+      <h6> Continue with Facebook or Gmail</h6><br>
     <%= form_for(:session, url: sessions_path(@user)) do |f| %>
 
         <div class="form_fields">
@@ -15,8 +17,7 @@
 
         <%= f.submit "Login" %>
 
-    <% end %>
+    <% end %></center>
     <br><br>
  
-    <p>Create Account</p>
-<%= button_to "Sign Up", new_user_path, :method => "get", class: "btn btn-primary btn-sm" %>
+    
