@@ -1,6 +1,7 @@
 <div class="form_fields">
-<h1> Signup </h1>
-      
+<center><h1> Join Rental Property Tracker </h1>
+<h6> Have an account?   <%= link_to "Sign In", new_session_path%></h6><br><br> 
+      <h6> Continue with Facebook or Gmail</h6><br>
         <%= form_for :user, url: '/users' do |f| %>
             
             <%= f.label :name %>
@@ -17,10 +18,10 @@
             
             <%= f.submit "Create Account" %>
 
-        <% end %>
+        <% end %></center>
 </div>
-<br>
-<br>
-<p>Already have an accout?</p>
-<%= button_to "Log In", new_session_path, :method => "get", class: "btn btn-primary btn-sm" %>
+
+
       
+
+   
