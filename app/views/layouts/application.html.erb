@@ -10,9 +10,12 @@
   </head>
 
   <body>
-      <%= render "partials/alerts" %>
-      <%= render "partials/nav" %>
       <%= render 'partials/jumbotron' %>
+      <%= render "partials/alerts" %>
+      <%if logged_in?%>
+      <%= render "partials/nav" %>
+      
+      <%end%>
       <main role="main">
       <div class="container">
     <%= yield %>
@@ -21,3 +24,6 @@
   </body>
   <%= render 'partials/footer' %>
 </html>
+
+
+
