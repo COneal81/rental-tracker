@@ -1,14 +1,13 @@
 class RepairsController < ApplicationController
 
-    before_action :logged_in?
+    before_action :logged_in?, :set_repair, :set_rental_properties
 
     def index
-        @repairs = Repair.all 
     end
 
     def new 
         @repair = Repair.new
-        @rental_properties = RentalProperty.pluck(:property_name, :id)
+        @rental_property = current_user.rental_properties
     end
 
     def create
@@ -31,6 +30,10 @@ class RepairsController < ApplicationController
     def repair_params
         params.require(:repair).permit(:repair_name, :repair_needed, 
         :repair_description, :repair_cost, :repair_completed, :rental_property_id)
+    end
+
+    def set_repair
+        @repairs = current_user.repairs
     end
 
 end
