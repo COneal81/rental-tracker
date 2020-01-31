@@ -1,5 +1,9 @@
 <div>
         <%= form_for(@tenant) do |f| %>
+
+        <%= f.collection_select :rental_properties, @rental_property.order(:property_name), 
+        :id, :property_name, include_blank: true %> <br><br>
+
         <strong><%= f.label :renter %></strong>
         <%= f.text_field :renter, class:"form-control" %><br>
 
