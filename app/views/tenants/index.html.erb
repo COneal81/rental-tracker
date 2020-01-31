@@ -3,4 +3,34 @@
    <p> ~ Have link to Current Rental property</p>
     <p>~ if possible, order the list by contract end date</p>
 
+    <h2>My Properties</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Tenant Name</th>
+              <th>Phone #</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+
+            <%@tenant.each do |tenant|%>
+              <td><%= tenant.id %></td>
+              <td><%= link_to tenant.renter, tenant_path(tenant)%></td>
+              <td><%= tenant.renter_cell_phone %> </td>
+              <td><%= tenant.renter_email%></td>
+            </tr>
+            
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+
     
