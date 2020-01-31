@@ -8,11 +8,11 @@ class TenantsController < ApplicationController
 
     def new 
         @tenant = Tenant.new
-        @rental_properties = RentalProperty.pluck(:property_name, :id)
+        @rental_property = current_user.rental_properties
     end
 
     def create
-       if @tenantr = Tenant.create(repair_params)
+       if @tenant = Tenant.create!(tenant_params)
       
             #Flash message here
             redirect_to tenant_path(@tenant)
@@ -23,13 +23,13 @@ class TenantsController < ApplicationController
     end
 
     def show 
-        @tenant = Tenant.find_by(id: params[:id])
-        @rental_property = RentalProperty.find_by(id: params[:id])
+        @tenant = Tenant.find(params[:id])
+        @rental_property = current_user.tenants
     end
 
     private
 
-    def repair_params
+    def tenant_params
         params.require(:tenant).permit(:renter, :co_renter, 
         :address, :renter_email, :co_renter_email, :renter_cell_phone, :co_renter_cell_phone)
     end
