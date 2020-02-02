@@ -12,7 +12,6 @@ class RepairsController < ApplicationController
 
     def create
        if @repair = Repair.create(repair_params)
-      
             #Flash message here
             redirect_to repair_path(@repair)
        else
