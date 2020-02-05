@@ -9,9 +9,9 @@
      
       <div class="card-body">
         <ul class="list-unstyled mt-3 mb-4">
-         <%= @repairs.each do |repair|%>
+         <% @repairs.each do |repair|%>
           <%if repair.repair_completed == false %>
-           <li> <%= link_to repair.repair_name, repair_path(repair)%> ~ $<%=repair.repair_cost%> ~ <%=repair.rental_property.property_name%></li><br>
+           <li> <%= link_to repair.repair_name, repair_path(repair)%> ~ <%=repair.rental_property.property_name%> ~ $<%=repair.repair_cost%></li><br>
           <%end%>
         <% end %>
         </ul>
@@ -24,12 +24,13 @@
       </div>
       <div class="card-body">
         <ul class="list-unstyled mt-3 mb-4">
-            <%= @repairs.each do |repair|%>
-             <%if repair.repair_completed == true %>
-                <li> <%= link_to repair.repair_name, repair_path(repair)%> ~ <%=repair.rental_property.property_name%></li><br>
+            <% @repairs.each do |repair|%>
+             <% if repair.repair_completed == true %>
+                <li> <%= link_to repair.repair_name, repair_path(repair)%> ~ <%=repair.rental_property.property_name%> ~ $<%=repair.repair_cost%></li><br>
               <% end %>
             <% end %>
         </ul>
       </div>
     </div>
+    
     
