@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+    before_action :logged_in?, :current_user
+
     def new 
         @user = User.new
     end
@@ -17,6 +20,7 @@ class UsersController < ApplicationController
 
     def show 
         @user = User.find_by(id: session[:user_id])
+        
     end
 
     
