@@ -12,10 +12,11 @@
   <body>
       <%= render 'partials/jumbotron' %>
       <%= render "partials/alerts" %>
+
       <%if logged_in?%>
       <%= render "partials/nav" %>
-      
       <%end%>
+      
       <main role="main">
       <div class="container">
     <%= yield %>
