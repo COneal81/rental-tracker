@@ -10,7 +10,7 @@
       
       <div class="card-body">
         <ul class="list-unstyled mt-3 mb-4">
-          <li> <%= link_to "My Properties", rental_properties_path%> </li>
+          <li> <%= link_to "My Properties", user_rental_properties_path(@user)%> </li>
           <li> <%= link_to "Add a Property", new_rental_property_path%> </li><br><br>
           <li> <%= link_to "Available Properties", rental_properties_path%> </li>
         </ul>
@@ -43,7 +43,7 @@
       
       <div class="card-body">
         <ul class="list-unstyled mt-3 mb-4">
-          <li> <%= link_to "All Payments", payment_path%> </li>
+          <li> <%= link_to "All Payments", payments_path%> </li>
           <li> <%= link_to "Receive a Payment", new_payment_path%> </li>
         </ul>
        
