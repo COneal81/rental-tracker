@@ -1,0 +1,29 @@
+<h1> Payments Owed </h1>
+ <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Tenant Name</th>
+              <th>Tenant Phone Number</th>
+              <th>Rental Property Id</th>
+              <th>Payment Owed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <%@payments.each do |payment|%>
+              <td><%= payment.amount_owed %></td>
+              
+            </tr>
+            
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<h1> Payments Received </h1>
