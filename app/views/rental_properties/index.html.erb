@@ -10,17 +10,18 @@
               <th>Property Name</th>
               <th>Address</th>
               <th>Leased</th>
-              <th>Repairs Needed?</th>
+              <th>Current Tenant</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+
             <%@rental_properties.each do |property|%>
               <td><%= property.id %></td>
               <td><%= link_to property.property_name, rental_property_path(property)%></td>
               <td><%= property.address %></td>
-              <td><%= property.leased %></td>
-              <td>sit</td>
+              <td><%= property.leased %> </td>
+              <td><%=property.tenant.renter%></td>
             </tr>
             
             <%end%>
