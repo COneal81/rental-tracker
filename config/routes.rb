@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   
   get '/logout', to: 'sessions#destroy'
 
+  get '/auth/google_oauth2/callback', to: 'sessions#create' 
+
   resources :sessions, only: [:new, :create]
 
   resources :users do 
