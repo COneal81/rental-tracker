@@ -1,7 +1,7 @@
 <div class="form_fields">
 <center><h1> Join Rental Property Tracker </h1>
 <h6> Have an account?   <%= link_to "Sign In", new_session_path%></h6><br><br> 
-      <h6> Continue with Facebook or Gmail</h6><br>
+      
         <%= form_for :user, url: '/users' do |f| %>
             
             <%= f.label :name %>
@@ -16,9 +16,11 @@
             <%= f.label :password_confirmation %> 
             <%= f.password_field :password_confirmation %><br><br>
             
-            <%= f.submit "Create Account" %>
+            <%= f.submit "Create Account" %><br><br>
 
-        <% end %></center>
+        <% end %>
+        <p> or </p>
+        <h6> <%= link_to("Sign Up with Gmail", '/auth/google_oauth2') %></h6><br></center>
 </div>
 
 
