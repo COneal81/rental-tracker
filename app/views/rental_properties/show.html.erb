@@ -2,8 +2,9 @@
   
   <%= button_to "Current Tenant", rental_property_tenant_path(@rental_property.tenant), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
   <%= button_to "New Tenant", new_rental_property_tenant_path(@rental_property.tenant), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
-  <%= button_to "Payments", rental_property_payment_path(@rental_property.payment), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
-  <%= button_to "Repairs", rental_property_repairs_path(@rental_property), :method=> "get", class: "btn btn-secondary btn-sm" %>
+  <%= button_to "New Repair", new_rental_property_repair_path(@rental_property.repairs), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+  
+  <%= button_to "Repairs", property_repairs_path(@rental_property), :method=> "get", class: "btn btn-secondary btn-sm" %>
   
 </div>
 
