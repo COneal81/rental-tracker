@@ -5,6 +5,10 @@ class RepairsController < ApplicationController
     def index
     end
 
+    def index_property
+        @repairs = Repair.where("rental_property_id = ?", params[:rental_property_id])
+    end
+
     def new 
         @repair = Repair.new
         @rental_property = current_user.rental_properties
