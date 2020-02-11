@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get '/auth/google_oauth2/callback', to: 'sessions#create' 
 
+   get '/rental_properties/:rental_property_id/repairs', to: 'repairs#index_property', as: 'property_repairs'
+
   resources :sessions, only: [:new, :create]
 
   resources :users do 
