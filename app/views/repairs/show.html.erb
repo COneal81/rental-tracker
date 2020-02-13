@@ -1,31 +1,18 @@
-
 <div class="grid-container">
-
-<div class="grid-item">
-    
-    
+  <div class="grid-item">
     <h2> Repair: <%= @repair.repair_name %> </h2><br>
-
-    <strong>Property Name:</strong> <%= @repair.rental_property.property_name %><br><br>
-    <strong>Property Address:</strong> <%= @repair.rental_property.address %><br><br>
-
-    <strong>Current Renter:</strong> <%= @repair.rental_property.tenant.renter %><br>
-    <strong>Current Renter:</strong> <%= @repair.rental_property.tenant.renter_cell_phone %><br><br>
-
-    <strong>Description:</strong> <%= @repair.repair_description %><br><br>
-    <strong>Repair Cost:</strong> $<%= @repair.repair_cost %><br><br>
-   
-    <strong>Repair Completed:</strong> <%= @repair.repair_completed %><br><br> 
-
-
-    
+      <strong>Property Name:</strong> <%= @repair.rental_property.property_name %><br><br>
+      <strong>Property Address:</strong> <%= @repair.rental_property.address %><br><br>
+      <strong>Description:</strong> <%= @repair.repair_description %><br><br>
+      <strong>Repair Cost:</strong> $<%= @repair.repair_cost %><br><br>
+      <strong>Repair Completed:</strong> <%= @repair.repair_completed %><br><br> 
 </div>
-<div class="btn-group" role="group" aria-label="Basic example">
-  <%= button_to "All Repairs", repairs_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
-  <%= button_to "Add Another Repair", new_repair_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
-  <%= button_to "Edit ", edit_repair_path(@repair), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
-  <%= button_to "Delete ", edit_repair_path(@repair), :method=> "get", class: "btn btn-secondary btn-sm" %>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <%= button_to "All Repairs", repairs_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+    <%= button_to "Add Another Repair", new_repair_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+    <%= button_to "Edit ", edit_repair_path(@repair), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+    <%= button_to "Delete ", repair_path(@repair), :method=> "delete", class: "btn btn-secondary btn-sm" %>
+  </div>
   <br>
   <br>
 
-<p> DELETE ROUTE HERE AND IN CONTROLLER </p>
