@@ -1,9 +1,9 @@
 class RentalProperty < ApplicationRecord
     belongs_to :user
     belongs_to :tenant
-    belongs_to :payment 
     has_many :repairs
+    has_many :supplies, through: :repairs
 
-    validates :property_name, :property_name, :address, :monthly_rental_amount, :deposit_amount, 
-        :square_feet, :user_id, :tenant_id, :payment_id, presence: true
+    validates :property_name, :address, :monthly_rental_amount, :deposit_amount, 
+        :square_feet, presence: true
 end
