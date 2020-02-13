@@ -1,7 +1,6 @@
 <div>
-        <%= form_for(@repair) do |f| %>
+    <%= form_for(@repair) do |f| %>
         <h4> Select Property </h4>
-        
         <%= f.collection_select :rental_property_id, @rental_property.order(:property_name), 
         :id, :property_name, include_blank: true %> <br><br>
         
@@ -18,8 +17,9 @@
         <%= f.check_box :repair_completed, class:"form-control" %><br>
 
         <%= f.submit submit_text %>
-        <% end %>
-        
-    </div>
+    <% end %>
+</div>
     
-  
+ 
+
+     
