@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_25_195200) do
+ActiveRecord::Schema.define(version: 2020_02_13_013421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "payments", force: :cascade do |t|
-    t.integer "amount_owed"
-    t.integer "amount_paid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
 
   create_table "rental_properties", force: :cascade do |t|
     t.string "property_name"
@@ -34,10 +27,9 @@ ActiveRecord::Schema.define(version: 2020_01_25_195200) do
     t.string "contract_end_date"
     t.integer "user_id"
     t.string "image_url"
-    t.integer "tenant_id"
-    t.integer "payment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "tenant_id"
   end
 
   create_table "repairs", force: :cascade do |t|
@@ -47,6 +39,12 @@ ActiveRecord::Schema.define(version: 2020_01_25_195200) do
     t.integer "repair_cost"
     t.boolean "repair_completed", default: false
     t.integer "rental_property_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "supplies", force: :cascade do |t|
+    t.string "supply_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -69,6 +67,8 @@ ActiveRecord::Schema.define(version: 2020_01_25_195200) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "google_token"
+    t.string "google_refresh_token"
   end
 
 end
