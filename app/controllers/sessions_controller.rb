@@ -1,9 +1,13 @@
 class SessionsController < ApplicationController
+    helper_method :logged_in?, :current_user
     def home 
         render 'sessions/new'
     end
     
     def new 
+        if logged_in?
+            redirect_to user_path(current_user)
+        end
     end
 
     def create
@@ -18,23 +22,9 @@ class SessionsController < ApplicationController
         end
     end
 
-    def create_google
-        # Get access tokens from the google server
-        access_token = request.env["omniauth.auth"]
+    
+    
         
-        user = User.from_omniauth(access_token)
-        # binding.pry
-        log_in(user)
-        # Access_token is used to authenticate request made from the rails application to the google server
-        user.google_token = access_token.credentials.token
-        # Refresh_token to request new access_token
-        # Note: Refresh_token is only sent once during the first request
-        refresh_token = access_token.credentials.refresh_token
-        user.google_refresh_token = refresh_token if refresh_token.present?
-        user.save
-        redirect_to user_rental_property_path
-    end
-
     def destroy
         if logged_in?
             session.clear
@@ -45,9 +35,8 @@ class SessionsController < ApplicationController
     end
 
     private
-    def auth
-        request.env['omniauth.auth']
-      end
+    
+    
     
 
 end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   get '/logout', to: 'sessions#destroy'
 
-  get '/auth/:provider/callback', to: 'sessions#create_google' 
+  get '/auth/:provider/callback', to: 'users#create_google' 
 
 
    get '/rental_properties/:rental_property_id/repairs', to: 'repairs#index_property', as: 'property_repairs'
