@@ -1,14 +1,11 @@
 <div>
         <%= form_for(@tenant) do |f| %>
-
-        <%= f.collection_select :rental_properties, @rental_property.order(:property_name), 
-        :id, :property_name, include_blank: true %> <br><br>
-
+        
         <strong><%= f.label :renter %></strong>
         <%= f.text_field :renter, class:"form-control" %><br>
 
         <strong><%= f.label :co_renter %></strong>
-        <%= f.text_area :co_renter, class:"form-control" %><br>
+        <%= f.text_field :co_renter, class:"form-control" %><br>
 
         <strong><%= f.label :address %></strong>
         <%= f.text_field :address, class:"form-control" %><br>
@@ -24,8 +21,6 @@
 
         <strong><%= f.label :co_renter_cell_phone %></strong>
         <%= f.text_field :co_renter_cell_phone, class:"form-control" %><br>
-
-        
 
         <%= f.submit submit_text %>
         <% end %>
