@@ -1,5 +1,4 @@
 class RepairsController < ApplicationController
-
     before_action :logged_in?, :set_repair, :set_rental_properties
 
     def index
@@ -15,6 +14,7 @@ class RepairsController < ApplicationController
     end
 
     def create
+        
        if @repair = Repair.create(repair_params)
             #Flash message here
             redirect_to repair_path(@repair)
@@ -26,6 +26,23 @@ class RepairsController < ApplicationController
 
     def show 
         @repair = Repair.find(params[:id])
+    end
+
+    def edit
+        @repair = Repair.find(params[:id])
+        @rental_property = current_user.rental_properties
+    end
+
+    def update
+        @repair = Repair.find(params[:id])
+        @repair.update(repair_params)
+        redirect_to repair_path(@repair)
+    end
+
+    def destroy
+        @repair = Repair.find(params[:id])
+        @repair.destroy
+        redirect_to repairs_path
     end
 
     private
