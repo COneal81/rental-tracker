@@ -1,16 +1,18 @@
 <div class="grid-container">
+    <div class="grid-item">
+        <h3> Tenant Profile for: <%= @tenant.renter %> </h3><br><br>
+        <h5> Renting Property: <%=@tenant.rental_properties%>
+        
+        <h3> Renter Info: </h3>
+        <strong> Tenant Name: <%= @tenant.renter %> </strong><br>
+        <strong>Cell Phone:</strong> <%= @tenant.renter_cell_phone %><br>
+        <strong>Email:</strong> <%= @tenant.renter_email %><br>
+        <strong>Previous Address: </strong> <%= @tenant.address %> <br><br><br>
 
-<div class="grid-item">
-        <h2> Tenant Name: <%= @tenant.renter %> </h2><br>
-        <strong>Co Renter:</strong> <%= @tenant.co_renter %><br><br>
-        <strong>Current Address: </strong> <%= @tenant.address %> <br>
-            <%@rental_property.each do |property|%>
-             <strong>Previous Address:</strong> <%= property.address %><br><br>
-            <% end %>
-        <strong>Renter Email:</strong> <%= @tenant.renter_email %><br>
-        <strong>Co Renter Email:</strong> <%= @tenant.co_renter_email %><br><br>
-        <strong>Renter Cell Phone:</strong> <%= @tenant.renter_cell_phone %><br><br>
-        <strong>Co Renter Cell Phone:</strong> <%= @tenant.co_renter_cell_phone %><br><br>
-</div>
+        <h4> Co Renter Info: </h4>
+         <strong>Name:</strong> <%= @tenant.co_renter %><br>
+        <strong>Cell Phone:</strong> <%= @tenant.co_renter_cell_phone %><br>
+        <strong>Email:</strong> <%= @tenant.co_renter_email %><br><br>
+    </div>
 
 <p> ADD EDIT AND DELETE BUTTONS FOR USER ONLY </p>
