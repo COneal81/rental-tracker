@@ -2,6 +2,7 @@ class RepairsController < ApplicationController
     before_action :logged_in?, :set_repair, :set_rental_properties
 
     def index
+        @user = current_user
     end
 
     def index_property
