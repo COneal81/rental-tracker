@@ -1,7 +1,8 @@
 <div class="grid-container">
     <div class="grid-item">
         <h3> Tenant Profile for: <%= @tenant.renter %> </h3><br><br>
-        <h5> Renting Property: <%=@tenant.rental_properties%>
+        <h5> Renting Property: <%= @tenant.rental_properties %> 
+        <h1> Would a join table solve the problem on the line above? </h1>
         
         <h3> Renter Info: </h3>
         <strong> Tenant Name: <%= @tenant.renter %> </strong><br>
@@ -15,4 +16,9 @@
         <strong>Email:</strong> <%= @tenant.co_renter_email %><br><br>
     </div>
 
-<p> ADD EDIT AND DELETE BUTTONS FOR USER ONLY </p>
+ <div class="btn-group" role="group" aria-label="Basic example">
+    <%= button_to "My Tenants", tenants_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+    <%= button_to "Add Tenant", new_tenant_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+    <%= button_to "Edit ", edit_tenant_path(@tenant), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+    <%= button_to "Delete ", tenant_path(@tenant), :method=> "delete", class: "btn btn-secondary btn-sm" %>
+  </div>

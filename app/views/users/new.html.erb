@@ -1,6 +1,6 @@
 <div class="form_fields">
 <center><h1> Join Rental Property Tracker </h1>
-<h6> Have an account?   <%= link_to "Sign In", new_session_path%></h6><br><br> 
+<h6> Already have an account? &nbsp  <%= link_to "Sign In", new_session_path%></h6><br>
       
         <%= form_for :user, url: '/users' do |f| %>
             
@@ -15,6 +15,7 @@
         
             <%= f.label :password_confirmation %> 
             <%= f.password_field :password_confirmation %><br><br>
+            <h6> ** All field musts be filled out. </h6><br>
             
             <%= f.submit "Create Account" %><br><br>
 

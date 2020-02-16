@@ -23,11 +23,26 @@ class TenantsController < ApplicationController
     end
 
     def show 
-        # binding.pry
-        @tenant = Tenant.find(params[:id])
-          
+          #@rental_property = RentalProperty.find(params[:id]) 
+         @tenant = Tenant.find(params[:id])
     end
 
+    def edit
+        @tenant = Tenant.find(params[:id])
+        @tenant = current_user.rental_properties
+    end
+
+    def update
+        @tenant = Tenant.find(params[:id])
+        @tenant.update(repair_params)
+        redirect_to tenant_path(@tenant)
+    end
+
+    def destroy
+        @tenant = Tenant.find(params[:id])
+        @tenant.destroy
+        redirect_to tenants_path
+    end
     private
 
     def tenant_params
@@ -38,4 +53,5 @@ class TenantsController < ApplicationController
     def set_tenant
         @tenants = current_user.tenants
     end
+    
 end

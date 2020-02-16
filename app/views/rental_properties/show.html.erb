@@ -2,7 +2,7 @@
   <%= button_to "Current Tenant", rental_property_tenant_path(@rental_property.tenant), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
   <%= button_to "New Tenant", new_rental_property_tenant_path(@rental_property.tenant), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
   <%= button_to "New Repair", new_rental_property_repair_path(@rental_property.repairs), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
-  <%= button_to "Repairs", property_repairs_path(@rental_property), :method=> "get", class: "btn btn-secondary btn-sm" %>
+  <%= button_to "Repairs", property_repairs_path(@rental_property), :method=> "get", class: "btn btn-secondary btn-sm"%>
 </div>
 <br><br>
 <div class="container">
@@ -13,14 +13,21 @@
       </div>
       <div class="card-body">
         <ul class="list-unstyled mt-3 mb-4">
+          <h4>Property Details</h4>
             <li><strong>Description:</strong> <%= @rental_property.property_description %></li><br>
             <li><strong>Address:</strong> <%= @rental_property.address %></li><br>
-            <li><strong>Square Feet:</strong> <%= @rental_property.square_feet %></li><br>
+            <li><strong>Square Feet:</strong> <%= @rental_property.square_feet %></li><br><br>
+
+          <h4>Tenant Details</h4>
+            <li><strong>Leased:</strong> <%= @rental_property.leased %></li><br>
+            <li><strong>Current Tenant:</strong> <%= link_to @rental_property.tenant.renter, rental_property_tenant_path(@rental_property) %></li><br>
             <li><strong>Monthly Rental Amount:</strong> $<%= @rental_property.monthly_rental_amount %></li><br> 
             <li><strong>Deposit Amount:</strong> $<%= @rental_property.deposit_amount %></li><br>
             <li><strong>Contract Start Date:</strong> <%= @rental_property.contract_start_date %></li><br> 
             <li><strong>Contract End Date:</strong> <%= @rental_property.contract_end_date %></li><br>
-            <li><strong>Leased:</strong> <%= @rental_property.leased %></li><br>
+            
+            
+
         </ul>
       </div>
         <div class="btn-group" role="group" aria-label="Basic example">

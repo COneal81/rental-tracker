@@ -1,9 +1,10 @@
 <div>
         <%= form_for(@rental_property) do |f| %>
+        <h6> * Field must be filled out. </h6><br>
 
         <h4> Property Info: </h4>
-
-        <strong><%= f.label :property_name %></strong>
+         
+        <strong><font color="#990012">*</font> <%= f.label :property_name %></strong>
         <%= f.text_field :property_name, class:"form-control" %><br>
 
          <strong><%= f.label :image_url %></strong>
@@ -12,20 +13,20 @@
         <strong><%= f.label :property_description %></strong>
         <%= f.text_area :property_description, class:"form-control" %><br>
 
-        <strong><%= f.label :address %></strong>
+        <strong><font color="#990012">*</font> <%= f.label :address %></strong>
         <%= f.text_field :address, class:"form-control" %><br>
 
-        <strong><%= f.label :square_feet %></strong>
+        <strong><font color="#990012">*</font> <%= f.label :square_feet %></strong>
         <%= f.text_field :square_feet, class:"form-control" %><br>
 
         <h4> Tenant Info: </h4>
         <%= f.collection_select :tenant_id, @tenant.order(:renter), 
         :id, :renter, include_blank: true %> <br><br>
 
-         <strong><%= f.label :monthly_rental_amount %></strong>
+         <strong><font color="#990012">*</font> <%= f.label :monthly_rental_amount %>*</strong>
         <%= f.text_field :monthly_rental_amount, class:"form-control" %><br>
 
-        <strong><%= f.label :deposit_amount %></strong>
+        <strong><font color="#990012">*</font> <%= f.label :deposit_amount %></strong>
         <%= f.text_field :deposit_amount, class:"form-control" %><br>
 
         <strong><%= f.label :contract_start_date %></strong>

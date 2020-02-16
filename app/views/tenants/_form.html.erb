@@ -1,22 +1,22 @@
 <div>
         <%= form_for(@tenant) do |f| %>
-        
-        <strong><%= f.label :renter %></strong>
+         <h6> * Field must be filled out. </h6><br>
+        <strong><font color="#990012">*</font> <%= f.label :renter %></strong>
         <%= f.text_field :renter, class:"form-control" %><br>
 
         <strong><%= f.label :co_renter %></strong>
         <%= f.text_field :co_renter, class:"form-control" %><br>
 
-        <strong><%= f.label :address %></strong>
+        <strong><font color="#990012">*</font> <%= f.label :address %></strong>
         <%= f.text_field :address, class:"form-control" %><br>
 
-        <strong><%= f.label :renter_email %></strong>
+        <strong><font color="#990012">*</font> <%= f.label :renter_email %></strong>
         <%= f.text_field :renter_email, class:"form-control" %><br>
 
         <strong><%= f.label :co_renter_email %></strong>
         <%= f.text_field :co_renter_email, class:"form-control" %><br>
 
-        <strong><%= f.label :renter_cell_phone %></strong>
+        <strong><font color="#990012">*</font> <%= f.label :renter_cell_phone %></strong>
         <%= f.text_field :renter_cell_phone, class:"form-control" %><br>
 
         <strong><%= f.label :co_renter_cell_phone %></strong>
