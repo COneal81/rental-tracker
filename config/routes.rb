@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
    get '/repairs/open_ticket_repairs', to: 'repairs#open_ticket_repairs', as: 'open_ticket_repairs'
 
+  #  get '/rental_properties/available_properties', to: 'rental_properties#available_properties', as: 'availabe_properties'
+
   resources :sessions, only: [:new, :create]
 
   resources :users do 

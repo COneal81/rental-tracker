@@ -5,8 +5,8 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>Property Name</th>
               <th>Repair</th>
+              <th>Property Name</th>
               <th>Rental Property Address</th>
               <th>Cost</th>
             </tr>
@@ -15,8 +15,8 @@
             <tr>
             <%@repairs.each do |repair|%>
               <td><%= repair.id %></td>
-              <td><%=repair.rental_property.property_name%></td>
               <td><%= link_to repair.repair_name, repair_path(repair)%>
+              <td><%= repair.rental_property.property_name %></td>
               <td><%= repair.rental_property.address %></td>
               <td><%= repair.repair_cost %> </td>
             </tr>
