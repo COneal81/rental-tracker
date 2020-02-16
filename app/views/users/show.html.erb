@@ -12,7 +12,7 @@
         <ul class="list-unstyled mt-3 mb-4">
           <li> <%= link_to "My Properties", user_rental_properties_path(@user)%> </li>
           <li> <%= link_to "Add a Property", new_user_rental_property_path(@user)%> </li><br><br>
-          <li> <%= link_to "Available Properties", rental_properties_path%> </li>
+          <li> <%= link_to "Available Properties", user_rental_properties_path(@user)%></li>
         </ul>
        
       </div>
@@ -26,7 +26,7 @@
         <ul class="list-unstyled mt-3 mb-4">
          <li> <%= link_to "All Repairs", repairs_path%> </li>
          <li> <%= link_to "Add a Repair", new_repair_path%> </li><br><br>
-         <li> <%= link_to "Open Repair Tickets", repairs_path%> </li>
+         <li> <%= link_to "Open Repair Tickets", open_ticket_repairs_path%> </li>
         </ul>
       </div>
     </div>

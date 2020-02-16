@@ -1,0 +1,29 @@
+<h1> Open Repair Tickets</h1><br>
+
+     <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Property Name</th>
+              <th>Repair</th>
+              <th>Rental Property Address</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <%@repairs.each do |repair|%>
+              <td><%= repair.id %></td>
+              <td><%=repair.rental_property.property_name%></td>
+              <td><%= link_to repair.repair_name, repair_path(repair)%>
+              <td><%= repair.rental_property.address %></td>
+              <td><%= repair.repair_cost %> </td>
+            </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>

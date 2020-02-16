@@ -8,6 +8,10 @@ class RepairsController < ApplicationController
         @repairs = Repair.where("rental_property_id = ?", params[:rental_property_id])
     end
 
+    def index_open_ticket_repairs
+        @repairs = Repair.where("repair_completed = false", params[:repair_completed])
+    end
+
     def new 
         @repair = Repair.new
         @rental_property = current_user.rental_properties
