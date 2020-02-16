@@ -6,4 +6,7 @@ class RentalProperty < ApplicationRecord
 
     validates :property_name, :address, :monthly_rental_amount, :deposit_amount, 
         :square_feet, presence: true
+
+       
+
 end

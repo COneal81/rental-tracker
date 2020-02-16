@@ -21,7 +21,7 @@
 
         <h4> Tenant Info: </h4>
         <%= f.collection_select :tenant_id, @tenant.order(:renter), 
-        :id, :renter, include_blank: true %> <br><br>
+        :id, :renter, include_blank: "" %> <br><br>
 
          <strong><font color="#990012">*</font> <%= f.label :monthly_rental_amount %>*</strong>
         <%= f.text_field :monthly_rental_amount, class:"form-control" %><br>

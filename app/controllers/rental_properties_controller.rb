@@ -1,11 +1,14 @@
 class RentalPropertiesController < ApplicationController
-    before_action :logged_in?, :set_rental_properties
+    before_action :current_user, :logged_in?, :set_rental_properties
 
     def index
     end
 
     def available_properties
-        @rental_properties = RentalProperty.where("leased = false", params[:leased])
+            @rental_properties = current_user.rental_properties.where("leased = false", params[:leased])
+            # binding.pry
+            # @rental_properties = RentalProperty.where("leased = false", params[:leased])
+            #binding.pry 
     end
 
     def new
@@ -15,8 +18,10 @@ class RentalPropertiesController < ApplicationController
     end
 
     def create
-        @rental_property = current_user.rental_properties.build(rental_property_params)
-        if @rental_property.save
+        @rental_property = RentalProperty.new(rental_property_params)
+        @tenant = Tenant.find(@rental_property.tenant_id)
+        if @rental_property.valid?
+            rental_property.save
     
             #Flash message here
             redirect_to user_rental_property_path(@rental_property.user, @rental_property)

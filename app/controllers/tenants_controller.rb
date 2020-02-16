@@ -1,9 +1,9 @@
 class TenantsController < ApplicationController  
 
-    before_action :logged_in?, :set_tenant, :current_user
+    before_action :logged_in?, :set_tenant
 
     def index
-    #    binding.pry
+        
     end
 
     def new 
@@ -13,9 +13,9 @@ class TenantsController < ApplicationController
     def create
          @tenant = current_user.tenants.build(tenant_params)
          if @tenant.save
-            # binding.pry
+             #binding.pry
             #Flash message here
-            redirect_to tenant_path(@tenant)
+            redirect_to user_tenant_path(@tenant.users, @tenant)
        else
             #Flash error here
             render :new

@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    helper_method :logged_in?, :current_user
+    helper_method :logged_in?
     def home 
         render 'sessions/new'
     end
