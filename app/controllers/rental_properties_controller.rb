@@ -4,6 +4,10 @@ class RentalPropertiesController < ApplicationController
     def index
     end
 
+    def available_properties
+        @rental_properties = RentalProperty.where("leased = false", params[:leased])
+    end
+
     def new
         @rental_property = RentalProperty.new
         @tenant = current_user.tenants
