@@ -1,9 +1,11 @@
 class TenantsController < ApplicationController  
 
-    before_action :logged_in?, :set_tenant
+    before_action :current_user, :logged_in?, :set_tenant
 
     def index
-        
+        if @tenants.empty?
+            flash.alert = "No Tenants Found"
+        end
     end
 
     def new 
@@ -14,10 +16,10 @@ class TenantsController < ApplicationController
          @tenant = current_user.tenants.build(tenant_params)
          if @tenant.save
              #binding.pry
-            #Flash message here
+            flash.notice = "#{@tenant.renter} was added."
             redirect_to user_tenant_path(@tenant.users, @tenant)
        else
-            #Flash error here
+            flash.alert = "* Fields must be filled in to create a new tenant"
             render :new
        end
     end
@@ -35,12 +37,14 @@ class TenantsController < ApplicationController
     def update
         @tenant = Tenant.find(params[:id])
         @tenant.update(repair_params)
+        flash.notice = "#{@tenant.renter} was updated."
         redirect_to tenant_path(@tenant)
     end
 
     def destroy
         @tenant = Tenant.find(params[:id])
         @tenant.destroy
+        flash.notice = "#{@tenant.renter} was deleted from your tenant list."
         redirect_to tenants_path
     end
     private
