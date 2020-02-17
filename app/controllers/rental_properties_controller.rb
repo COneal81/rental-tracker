@@ -2,37 +2,39 @@ class RentalPropertiesController < ApplicationController
     before_action :current_user, :logged_in?, :set_rental_properties
 
     def index
+        if @rental_properties.empty?
+            flash.alert = "No Properties Found"
+        end
     end
 
     def available_properties
             @rental_properties = current_user.rental_properties.where("leased = false", params[:leased])
-            # binding.pry
-            # @rental_properties = RentalProperty.where("leased = false", params[:leased])
-            #binding.pry 
+            if @rental_properties.empty?
+                flash.alert = "You currently do not have any properties available to be leased."
+            end
     end
 
     def new
-        @rental_property = RentalProperty.new
-        @tenant = current_user.tenants
-        #binding.pry
+         @rental_property = RentalProperty.new
+         @tenant = current_user.tenants
+         @user = current_user
+        #  binding.pry
     end
 
     def create
         @rental_property = RentalProperty.new(rental_property_params)
-        @tenant = Tenant.find(@rental_property.tenant_id)
         if @rental_property.valid?
-            rental_property.save
-    
-            #Flash message here
+            @rental_property.save
+            # binding.pry
+            flash.notice = "#{@rental_property.property_name} was added."
             redirect_to user_rental_property_path(@rental_property.user, @rental_property)
         else 
-            #flash message here
+            flash.alert = "* Fields must be filled in to create a new property"
             render :new
         end
     end
 
     def show 
-        
         @rental_property = RentalProperty.find(params[:id])
         # binding.pry
     end
@@ -40,17 +42,20 @@ class RentalPropertiesController < ApplicationController
     def edit
         @rental_property = RentalProperty.find(params[:id])
         @tenant = current_user.tenants
+        @user = current_user
     end
 
     def update
         @rental_property = RentalProperty.find(params[:id])
         @rental_property.update(rental_property_params)
+        flash.notice = "#{@rental_property.property_name} was updated."
         redirect_to rental_property_path(@rental_property)
     end
 
     def destroy
         @rental_property = RentalProperty.find(params[:id])
         @rental_property.destroy
+        flash.notice = "#{@rental_property.property_name} was deleted from your property list."
         redirect_to rental_properties_path
     end
 

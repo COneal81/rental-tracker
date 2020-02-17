@@ -2,11 +2,16 @@ class RepairsController < ApplicationController
     before_action :logged_in?, :set_repair, :set_rental_properties
 
     def index
-        @user = current_user
+        if @repairs.empty?
+            flash.alert = "No Repairs Found"
+        end
     end
 
     def index_property
         @repairs = Repair.where("rental_property_id = ?", params[:rental_property_id])
+        if @repairs.empty?
+            flash.alert = "No Repairs Found"
+        end
     end
 
     def index_open_ticket_repairs
@@ -19,11 +24,13 @@ class RepairsController < ApplicationController
 
     def create
         
-       if @repair = Repair.create(repair_params)
-            #Flash message here
+       @repair = Repair.new(repair_params)
+        if @repair.valid?
+            @repair.save
+            flash.notice = "#{@repair.repair_name} was added."
             redirect_to repair_path(@repair)
        else
-            #Flash error here
+            flash.alert = "* Fields must be filled in to create a new repair."
             render :new
        end
     end
@@ -40,12 +47,14 @@ class RepairsController < ApplicationController
     def update
         @repair = Repair.find(params[:id])
         @repair.update(repair_params)
+        flash.notice = "#{@repair.repair_name} was updated."
         redirect_to repair_path(@repair)
     end
 
     def destroy
         @repair = Repair.find(params[:id])
         @repair.destroy
+        flash.notice = "#{@repair.repair_name} was deleted from your repair list."
         redirect_to repairs_path
     end
 
