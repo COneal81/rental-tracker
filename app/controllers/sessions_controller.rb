@@ -14,10 +14,10 @@ class SessionsController < ApplicationController
         @user = User.find_by(email: params[:session][:email])
         if @user && @user.authenticate(params[:session][:password])
             session[:user_id] = @user.id 
-            #place a flash message here
+            flash.notice = "Signed in sucessfully as #{@user.name}"
             redirect_to user_path(@user)
         else 
-            #place flash message here
+            flash.alert = "Invalid Email or Password.  Please try again."
             render :new 
         end
     end
@@ -28,6 +28,7 @@ class SessionsController < ApplicationController
     def destroy
         if logged_in?
             session.clear
+            flash.notice = "Signed out sucessfully."
             redirect_to "/"
         else 
             redirect_back(fallback_location: root_path)

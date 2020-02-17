@@ -15,9 +15,10 @@ class UsersController < ApplicationController
         if @user.valid?
             @user.save
             session[:user_id] = @user.id
-            #place a flash message here
+            flash.notice = "Signed in sucessfully as #{@user.name}"
             redirect_to user_path(@user)
         else
+            flash.alert = "#{@user.errors.full_messages.to_sentence}"
             render :new
         end
     end
@@ -27,17 +28,20 @@ class UsersController < ApplicationController
             @user = User.find_by(email: auth[:info][:email])
         if @user
             session[:user_id] = @user.id
+            flash.notice = "Signed in sucessfully as #{@user.name}"
             redirect_to user_path(@user)
         elsif @user.nil?
-         @user = User.create!(
-            email: auth[:info][:email],
-            name: auth[:info][:name],
-            password: SecureRandom.urlsafe_base64
-          )
-         session[:user_id] = @user.id
-          redirect_to user_path(@user)
+            @user = User.create!(
+                email: auth[:info][:email],
+                name: auth[:info][:name],
+                password: SecureRandom.urlsafe_base64
+            )
+            session[:user_id] = @user.id
+            flash.notice = "Signed in sucessfully as #{@user.name}"
+            redirect_to user_path(@user)
         else
-          render :new
+            flash.alert = "#{@user.errors.full_messages.to_sentence}"
+            render :new
         end
       end
     end
