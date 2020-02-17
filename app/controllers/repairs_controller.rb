@@ -10,7 +10,6 @@ class RepairsController < ApplicationController
     end
 
     def index_open_ticket_repairs
-        @repairs = Repair.where("repair_completed = false", params[:repair_completed])
     end
 
     def new 
