@@ -19,7 +19,6 @@ class TenantsController < ApplicationController
             flash.notice = "#{@tenant.renter} was added."
             redirect_to user_tenant_path(@tenant.users, @tenant)
        else
-            flash.alert = "* Fields must be filled in to create a new tenant"
             render :new
        end
     end
@@ -37,8 +36,12 @@ class TenantsController < ApplicationController
     def update
         @tenant = Tenant.find(params[:id])
         @tenant.update(repair_params)
-        flash.notice = "#{@tenant.renter} was updated."
-        redirect_to tenant_path(@tenant)
+            if @tenant.save
+                flash.notice = "#{@tenant.renter} was updated."
+                redirect_to tenant_path(@tenant)
+            else
+                render :edit
+            end
     end
 
     def destroy

@@ -30,7 +30,6 @@ class RepairsController < ApplicationController
             flash.notice = "#{@repair.repair_name} was added."
             redirect_to repair_path(@repair)
        else
-            flash.alert = "* Fields must be filled in to create a new repair."
             render :new
        end
     end
@@ -47,8 +46,12 @@ class RepairsController < ApplicationController
     def update
         @repair = Repair.find(params[:id])
         @repair.update(repair_params)
-        flash.notice = "#{@repair.repair_name} was updated."
-        redirect_to repair_path(@repair)
+        if @repair.save
+            flash.notice = "#{@repair.repair_name} was updated."
+            redirect_to repair_path(@repair)
+        else
+            render :edit
+        end
     end
 
     def destroy
