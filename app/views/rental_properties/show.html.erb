@@ -1,6 +1,10 @@
 <div class="btn-group" role="group" aria-label="Basic example">
+ <% if @rental_property.tenant.present? %>
   <%= button_to "Current Tenant", rental_property_tenant_path(@rental_property.tenant), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+  <%end%>
+   <% if @rental_property.tenant.present? %>
   <%= button_to "New Tenant", new_rental_property_tenant_path(@rental_property.tenant), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+  <%end%>
   <%= button_to "New Repair", new_rental_property_repair_path(@rental_property.repairs), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
   <%= button_to "Repairs", property_repairs_path(@rental_property), :method=> "get", class: "btn btn-secondary btn-sm"%>
 </div>
@@ -20,7 +24,9 @@
 
           <h4>Tenant Details</h4>
             <li><strong>Leased:</strong> <%= @rental_property.leased %></li><br>
-            <li><strong>Current Tenant:</strong> <%= link_to @rental_property.tenant.renter, rental_property_tenant_path(@rental_property) %></li><br>
+            
+              <li><strong>Current Tenant:</strong> <% if @rental_property.tenant.present? %><%= link_to @rental_property.tenant.renter, rental_property_tenant_path(@rental_property) %><%end%></li><br>
+            
             <li><strong>Monthly Rental Amount:</strong> $<%= @rental_property.monthly_rental_amount %></li><br> 
             <li><strong>Deposit Amount:</strong> $<%= @rental_property.deposit_amount %></li><br>
             <li><strong>Contract Start Date:</strong> <%= @rental_property.contract_start_date %></li><br> 

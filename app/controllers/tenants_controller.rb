@@ -1,9 +1,10 @@
 class TenantsController < ApplicationController  
 
-    before_action :current_user, :logged_in?, :set_tenant, :set_rental_properties
+    before_action :current_user, :logged_in?, :set_tenants, :set_rental_properties
 
     def index
-        # @tenants = Tenant.all
+        #  @tenants = Tenant.all
+        current_user.tenants
         if @tenants.empty?
             flash.alert = "No Tenants Found"
         end
@@ -17,7 +18,6 @@ class TenantsController < ApplicationController
          @tenant = Tenant.new(tenant_params)
          if @tenant.valid?
             @tenant.save
-             #binding.pry
             flash.notice = "#{@tenant.renter} was added."
             redirect_to tenant_path(@tenant)
        else
@@ -59,7 +59,7 @@ class TenantsController < ApplicationController
         :address, :renter_email, :co_renter_email, :renter_cell_phone, :co_renter_cell_phone)
     end
 
-    def set_tenant
+    def set_tenants
         @tenants = current_user.tenants
     end
     

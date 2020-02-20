@@ -1,6 +1,6 @@
 class RentalProperty < ApplicationRecord
     belongs_to :user
-    belongs_to :tenant
+    belongs_to :tenant, optional: true
     has_many :repairs
     
 

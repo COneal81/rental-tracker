@@ -24,7 +24,7 @@ class RentalPropertiesController < ApplicationController
         @rental_property = RentalProperty.new(rental_property_params)
         if @rental_property.valid?
             @rental_property.save
-            # binding.pry
+            binding.pry
             flash.notice = "#{@rental_property.property_name} was added."
             redirect_to rental_property_path(@rental_property)
         else 
