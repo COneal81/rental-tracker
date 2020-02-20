@@ -1,5 +1,5 @@
 class RepairsController < ApplicationController
-    before_action :logged_in?, :set_repair, :set_rental_properties
+    before_action :current_user, :logged_in?, :set_repair, :set_rental_properties
 
     def index
         if @repairs.empty?
@@ -23,13 +23,13 @@ class RepairsController < ApplicationController
     end
 
     def create
-        
        @repair = Repair.new(repair_params)
         if @repair.valid?
             @repair.save
             flash.notice = "#{@repair.repair_name} was added."
             redirect_to repair_path(@repair)
        else
+            @rental_property = current_user.rental_properties
             render :new
        end
     end

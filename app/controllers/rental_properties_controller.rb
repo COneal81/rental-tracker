@@ -16,7 +16,6 @@ class RentalPropertiesController < ApplicationController
 
     def new
          @rental_property = RentalProperty.new
-         @tenant = current_user.tenants
          @user = current_user
         #  binding.pry
     end
@@ -27,9 +26,9 @@ class RentalPropertiesController < ApplicationController
             @rental_property.save
             # binding.pry
             flash.notice = "#{@rental_property.property_name} was added."
-            redirect_to user_rental_property_path(@rental_property.user, @rental_property)
+            redirect_to rental_property_path(@rental_property)
         else 
-            flash.alert = "* Fields must be filled in to create a new property"
+            @user = current_user
             render :new
         end
     end
@@ -48,8 +47,12 @@ class RentalPropertiesController < ApplicationController
     def update
         @rental_property = RentalProperty.find(params[:id])
         @rental_property.update(rental_property_params)
-        flash.notice = "#{@rental_property.property_name} was updated."
-        redirect_to rental_property_path(@rental_property)
+        if @rental_property.save
+            flash.notice = "#{@rental_property.property_name} was updated."
+            redirect_to rental_property_path(@rental_property)
+        else
+            render :edit
+        end
     end
 
     def destroy

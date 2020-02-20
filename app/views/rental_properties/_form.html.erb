@@ -27,10 +27,10 @@
 
         <strong><font color="#990012">*</font> <%= f.label :square_feet %></strong>
         <%= f.text_field :square_feet, class:"form-control" %><br>
-        
+
         <h4> Tenant Info: </h4>
         <strong> <font color="#990012">*</font>  <%= f.label :tenant %> </strong>
-        <%= f.collection_select :tenant_id, @tenant, 
+        <%= f.collection_select :tenant_id, current_user.tenants, 
         :id, :renter, include_blank: "Not Leased" %> <br><br>
 
          <strong><font color="#990012">*</font> <%= f.label :monthly_rental_amount %>*</strong>

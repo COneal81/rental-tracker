@@ -1,8 +1,9 @@
 class TenantsController < ApplicationController  
 
-    before_action :current_user, :logged_in?, :set_tenant
+    before_action :current_user, :logged_in?, :set_tenant, :set_rental_properties
 
     def index
+        # @tenants = Tenant.all
         if @tenants.empty?
             flash.alert = "No Tenants Found"
         end
@@ -13,18 +14,19 @@ class TenantsController < ApplicationController
     end
 
     def create
-         @tenant = current_user.tenants.build(tenant_params)
-         if @tenant.save
+         @tenant = Tenant.new(tenant_params)
+         if @tenant.valid?
+            @tenant.save
              #binding.pry
             flash.notice = "#{@tenant.renter} was added."
-            redirect_to user_tenant_path(@tenant.users, @tenant)
+            redirect_to tenant_path(@tenant)
        else
             render :new
        end
     end
 
     def show 
-          #@rental_property = RentalProperty.find(params[:id]) 
+        #   @rental_property = RentalProperty.find(params[:id])
          @tenant = Tenant.find(params[:id])
     end
 
@@ -38,7 +40,7 @@ class TenantsController < ApplicationController
         @tenant.update(repair_params)
             if @tenant.save
                 flash.notice = "#{@tenant.renter} was updated."
-                redirect_to tenant_path(@tenant)
+                redirect_to user_tenant_path(@user, @tenant)
             else
                 render :edit
             end

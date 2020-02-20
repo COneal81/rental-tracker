@@ -14,7 +14,7 @@
           </thead>
           <tbody>
             <tr>
-            <%current_user.tenants.each do |tenant|%>
+            <%@tenants.each do |tenant|%>
               <td><%= tenant.id %></td>
               <td><%= link_to tenant.renter, tenant_path(tenant)%></td>
               <td><%= tenant.renter_cell_phone %> </td>
