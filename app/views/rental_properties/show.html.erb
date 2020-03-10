@@ -22,17 +22,24 @@
             <li><strong>Address:</strong> <%= @rental_property.address %></li><br>
             <li><strong>Square Feet:</strong> <%= @rental_property.square_feet %></li><br><br>
 
-          <h4>Tenant Details</h4>
-            <li><strong>Leased:</strong> <%= @rental_property.leased %></li><br>
-            
-              <li><strong>Current Tenant:</strong> <% if @rental_property.tenant.present? %><%= link_to @rental_property.tenant.renter, rental_property_tenant_path(@rental_property) %><%end%></li><br>
-            
+          <h4>Property Lease Details</h4>
+            <li><strong>Leased:</strong> <%= leased_boolean_display(@rental_property.leased) %></li><br>
+            <li><strong>Current Tenant:</strong> <% if @rental_property.tenant.present? %>
+              <%= link_to @rental_property.tenant.renter, rental_property_tenant_path(@rental_property) %><%end%></li><br>
             <li><strong>Monthly Rental Amount:</strong> $<%= @rental_property.monthly_rental_amount %></li><br> 
             <li><strong>Deposit Amount:</strong> $<%= @rental_property.deposit_amount %></li><br>
             <li><strong>Contract Start Date:</strong> <%= @rental_property.contract_start_date %></li><br> 
-            <li><strong>Contract End Date:</strong> <%= @rental_property.contract_end_date %></li><br>
+            <li><strong>Contract End Date:</strong> <%= @rental_property.contract_end_date %></li><br><br>
             
-            
+          <h4>Tenant Info:</h4>
+            <li><strong>Renter Name:</strong> <%= @new_tenant.renter %> </li><br>
+            <li><strong>Co Renter Name:</strong> <%=@new_tenant.co_renter %> </li><br>
+            <li><strong>Previous Address:</strong> <%=@new_tenant.address %> </li><br>
+            <li><strong>Renter Email:</strong> <%=@new_tenant.renter_email%> </li><br>
+            <li><strong>Co Renter Email:</strong> <%=@new_tenant.co_renter_email %> </li><br>
+            <li><strong>Renter Cell Phone:</strong> <%=@new_tenant.renter_cell_phone %> </li><br>
+            <li><strong>Co Renter Cell Phone:</strong> <%=@new_tenant.co_renter_cell_phone %> </li><br>
+          
 
         </ul>
       </div>

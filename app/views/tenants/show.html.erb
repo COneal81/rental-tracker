@@ -1,8 +1,11 @@
 <div class="grid-container">
     <div class="grid-item">
-        <h3> Tenant Profile for: <%= @tenant.renter %> </h3><br><br>
-        <h5> Renting Property: <%= @tenant.rental_properties %> 
-        <h1> Would a join table solve the problem on the line above? </h1>
+        <h3> Tenant Profile for: <%= @tenant.renter %> </h3>
+         <% @tenant.rental_properties.each do |rental| %> 
+            <strong> Renting Property: </strong><%= rental.property_name %><br>
+            <strong> Property Address: </strong><%= rental.address %><br><br>
+         <% end %>
+        
         
         <h3> Renter Info: </h3>
         <strong> Tenant Name: <%= @tenant.renter %> </strong><br>

@@ -28,12 +28,7 @@
         <strong><font color="#990012">*</font> <%= f.label :square_feet %></strong>
         <%= f.text_field :square_feet, class:"form-control" %><br>
 
-        <h4> Tenant Info: </h4>
-        <strong> <font color="#990012">*</font>  <%= f.label :tenant %> </strong>
-        <%= f.collection_select :tenant_id, current_user.tenants, 
-        :id, :renter, include_blank: "Not Leased" %> <br><br>
-
-         <strong><font color="#990012">*</font> <%= f.label :monthly_rental_amount %>*</strong>
+        <strong><font color="#990012">*</font> <%= f.label :monthly_rental_amount %>*</strong>
         <%= f.text_field :monthly_rental_amount, class:"form-control" %><br>
 
         <strong><font color="#990012">*</font> <%= f.label :deposit_amount %></strong>
@@ -50,8 +45,43 @@
 
         <%= f.hidden_field :user_id, :value => @user.id %>
 
+        <h4> Tenant Info: </h4>
+        <h6>Select Tenant</h6>
+        <strong> <font color="#990012">*</font>  <%= f.label :tenant_id %> </strong>
+        <%= f.collection_select :tenant_id, current_user.tenants.uniq, 
+        :id, :renter, include_blank: "Not Leased" %> <br>
+        
+        <h6>or</h6> <br>
+        
+        <h6>Add a Tenant</h6>
+          
+         <%= f.fields_for :tenant, @new_tenant do |tenant_attributes|%>
+       
+        <strong><font color="#990012">*</font> <%= f.label :renter %></strong>
+        <%= tenant_attributes.text_field :renter %><br>
+
+        <strong><%= f.label :co_renter %></strong>
+        <%= tenant_attributes.text_field :co_renter %><br>
+
+        <strong><font color="#990012">*</font> <%= f.label :address %></strong>
+        <%= tenant_attributes.text_field :address %><br>
+
+        <strong><font color="#990012">*</font> <%= f.label :renter_email %></strong>
+        <%= tenant_attributes.text_field :renter_email %><br>
+
+        <strong><%= f.label :co_renter_email %></strong>
+        <%= tenant_attributes.text_field :co_renter_email %><br>
+
+        <strong><font color="#990012">*</font> <%= f.label :renter_cell_phone %></strong>
+        <%= tenant_attributes.text_field :renter_cell_phone %><br>
+
+        <strong><%= f.label :co_renter_cell_phone %></strong>
+        <%= tenant_attributes.text_field :co_renter_cell_phone %><br>
+        <% end %><br>
        
         <%= f.submit submit_text %>
-        
         <% end %>
+       
+        
+       
     </div>

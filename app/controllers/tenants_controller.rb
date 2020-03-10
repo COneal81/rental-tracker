@@ -1,21 +1,25 @@
 class TenantsController < ApplicationController  
 
-    before_action :current_user, :logged_in?, :set_tenants, :set_rental_properties
+    before_action :current_user, :logged_in?, :set_rental_properties, :set_tenants
 
     def index
-        #  @tenants = Tenant.all
-        current_user.tenants
-        if @tenants.empty?
-            flash.alert = "No Tenants Found"
-        end
+        #    @tenants = Tenant.all
+        #  @tenants = current_user.tenants
+        # @current_user_tenants = current_user.tenants.uniq
+        # if @new_tenants.empty?
+        #     flash.alert = "No Tenants Found"
+        # end
     end
 
     def new 
         @tenant = Tenant.new
+        @user = current_user
     end
 
     def create
-         @tenant = Tenant.new(tenant_params)
+    
+         @tenant = current_user.tenants.build(tenant_params)
+        #  binding.pry
          if @tenant.valid?
             @tenant.save
             flash.notice = "#{@tenant.renter} was added."
