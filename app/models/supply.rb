@@ -4,4 +4,6 @@ class Supply < ApplicationRecord
 
      belongs_to :user
      belongs_to :repair, optional: true
+
+     validates :supply_name, presence: true
 end
