@@ -16,13 +16,13 @@ class RentalPropertiesController < ApplicationController
 
     def new
          @rental_property = RentalProperty.new
-         @new_tenant = Tenant.new
-         @user = current_user
+        #  @new_tenant = Tenant.new
+          @user = current_user
         #  binding.pry
     end
 
     def create
-        @new_tenant = Tenant.find_or_create_by(tenant_params)
+        # @new_tenant = Tenant.find_or_create_by(tenant_params)
         
         # binding.pry
         @rental_property = RentalProperty.new(rental_property_params)
@@ -50,14 +50,15 @@ class RentalPropertiesController < ApplicationController
     def show 
        
         @rental_property = RentalProperty.find(params[:id])
-        @new_tenant = Tenant.find(params[:id])
+        # @tenant = Tenant.find(params[:id])
         # binding.pry
+        
     end
 
     def edit
         
         @rental_property = RentalProperty.find(params[:id])
-        @new_tenant = Tenant.find(params[:id])
+        # @new_tenant = Tenant.find(params[:id])
         @user = current_user
         # binding.pry
     end
@@ -65,10 +66,11 @@ class RentalPropertiesController < ApplicationController
     def update
         @rental_property = RentalProperty.find(params[:id])
         @rental_property.update(rental_property_params)
-        @new_tenant = Tenant.find(params[:id])
-        @new_tenant.update(tenant_params)
-        if @rental_property.save && @new_tenant.save
-            flash.notice = "Rental Property, #{@rental_property.property_name}, and tenant, #{@new_tenant.renter}, were both updated."
+        # @new_tenant = Tenant.find(params[:id])
+        # @new_tenant.update(tenant_params)
+        if @rental_property.save 
+            # && @new_tenant.save
+            flash.notice = "Rental Property, #{@rental_property.property_name} updated."
             redirect_to rental_property_path(@rental_property)
         else
             render :edit
@@ -100,15 +102,15 @@ class RentalPropertiesController < ApplicationController
                                                 
     end
 
-    def tenant_params
-        params.require(:rental_property) 
-        .require(:tenant).permit(:renter, 
-                                       :co_renter, 
-                                       :address, 
-                                       :renter_email, 
-                                       :co_renter_email, 
-                                       :renter_cell_phone, 
-                                       :co_renter_cell_phone)
-    end
+    # def tenant_params
+    #     params.require(:rental_property) 
+    #     .require(:tenant).permit(:renter, 
+    #                                    :co_renter, 
+    #                                    :address, 
+    #                                    :renter_email, 
+    #                                    :co_renter_email, 
+    #                                    :renter_cell_phone, 
+    #                                    :co_renter_cell_phone)
+    # end
 
 end

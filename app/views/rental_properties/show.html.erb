@@ -35,13 +35,17 @@
             <li><strong>Contract End Date:</strong> <%= @rental_property.contract_end_date %></li><br><br>
             
           <h4>Tenant Info:</h4> 
-            <li><strong>Renter Name:</strong> <%= @rental_property.tenant.renter %></li><br> 
-            <li><strong>Co Renter Name:</strong> <%=@rental_property.tenant.co_renter %> </li><br> 
-            <li><strong>Previous Address:</strong> <%=@rental_property.tenant.address %> </li><br>
-            <li><strong>Renter Email:</strong> <%=@rental_property.tenant.renter_email%> </li><br> 
-            <li><strong>Co Renter Email:</strong> <%=@rental_property.tenant.co_renter_email %> </li><br> 
-            <li><strong>Renter Cell Phone:</strong> <%=@rental_property.tenant.renter_cell_phone %> </li><br> 
-            <li><strong>Co Renter Cell Phone:</strong> <%=@rental_property.tenant.co_renter_cell_phone %> </li><br>
+            <% if @rental_property.tenant.present?%>
+              <li><strong>Renter Name:</strong> <%= @rental_property.tenant.renter %></li><br> 
+              <li><strong>Co Renter Name:</strong> <%=@rental_property.tenant.co_renter %> </li><br> 
+              <li><strong>Previous Address:</strong> <%=@rental_property.tenant.address %> </li><br>
+              <li><strong>Renter Email:</strong> <%=@rental_property.tenant.renter_email%> </li><br> 
+              <li><strong>Co Renter Email:</strong> <%=@rental_property.tenant.co_renter_email %> </li><br> 
+              <li><strong>Renter Cell Phone:</strong> <%=@rental_property.tenant.renter_cell_phone %> </li><br> 
+              <li><strong>Co Renter Cell Phone:</strong> <%=@rental_property.tenant.co_renter_cell_phone %> </li><br>
+            <% else %>
+              <p> This property is currently not being leased. </p>
+            <% end %>
            
         </ul>
       </div>

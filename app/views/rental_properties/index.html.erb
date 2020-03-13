@@ -19,7 +19,7 @@
               <td><%= property.id %></td>
               <td><%= link_to property.property_name, rental_property_path(property)%></td>
               <td><%= property.address %></td>
-              <td><%= leased_boolean_display(property.leased) %> </td>
+              <td><%= boolean_display(property.leased) %> </td>
               <td><% if property.tenant.present? %><%= property.tenant.renter%><%end%></td>
             </tr>
             <%end%>

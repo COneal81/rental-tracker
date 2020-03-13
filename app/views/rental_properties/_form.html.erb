@@ -7,6 +7,7 @@
     </ul>
   </div>
 <% end %>
+
 <div>
         <%= form_for(@rental_property) do |f| %>
         <h6> * Field must be filled out. </h6><br>
@@ -43,45 +44,12 @@
         <strong><%= f.label :leased %></strong>
         <%= f.check_box :leased, class:"form-control" %><br>
 
+        <h4> Select Tenant </h4>
+        <%= f.collection_select :tenant_id, current_user.tenants.order(:renter), 
+        :id, :renter  , include_blank: true %> <br><br>
+
         <%= f.hidden_field :user_id, :value => @user.id %>
-
-        <h4> Tenant Info: </h4>
-        <h6>Select Tenant</h6>
-        <strong> <font color="#990012">*</font>  <%= f.label :tenant_id %> </strong>
-        <%= f.collection_select :tenant_id, current_user.tenants.uniq, 
-        :id, :renter, include_blank: "Not Leased" %> <br>
-        
-        <h6>or</h6> <br>
-        
-        <h6>Add a Tenant</h6>
-          
-         <%= f.fields_for :tenant, @new_tenant do |tenant_attributes|%>
-       
-        <strong><font color="#990012">*</font> <%= f.label :renter %></strong>
-        <%= tenant_attributes.text_field :renter %><br>
-
-        <strong><%= f.label :co_renter %></strong>
-        <%= tenant_attributes.text_field :co_renter %><br>
-
-        <strong><font color="#990012">*</font> <%= f.label :address %></strong>
-        <%= tenant_attributes.text_field :address %><br>
-
-        <strong><font color="#990012">*</font> <%= f.label :renter_email %></strong>
-        <%= tenant_attributes.text_field :renter_email %><br>
-
-        <strong><%= f.label :co_renter_email %></strong>
-        <%= tenant_attributes.text_field :co_renter_email %><br>
-
-        <strong><font color="#990012">*</font> <%= f.label :renter_cell_phone %></strong>
-        <%= tenant_attributes.text_field :renter_cell_phone %><br>
-
-        <strong><%= f.label :co_renter_cell_phone %></strong>
-        <%= tenant_attributes.text_field :co_renter_cell_phone %><br>
-        <% end %><br>
        
         <%= f.submit submit_text %>
         <% end %>
-       
-        
-       
     </div>

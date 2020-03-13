@@ -11,6 +11,8 @@
 <div>
         <%= form_for(@tenant) do |f| %>
          <h6> * Field must be filled out. </h6><br>
+
+        <h4> Property Info: </h4>
         <strong><font color="#990012">*</font> <%= f.label :renter %></strong>
         <%= f.text_field :renter, class:"form-control" %><br>
 
@@ -32,7 +34,7 @@
         <strong><%= f.label :co_renter_cell_phone %></strong>
         <%= f.text_field :co_renter_cell_phone, class:"form-control" %><br>
 
-        
+        <%= f.hidden_field :user_id, :value => @user.id %>
 
         <%= f.submit submit_text %>
         <% end %>

@@ -3,22 +3,25 @@ class TenantsController < ApplicationController
     before_action :current_user, :logged_in?, :set_rental_properties, :set_tenants
 
     def index
-        #    @tenants = Tenant.all
-        #  @tenants = current_user.tenants
-        # @current_user_tenants = current_user.tenants.uniq
-        # if @new_tenants.empty?
-        #     flash.alert = "No Tenants Found"
-        # end
+          if @tenants.empty?
+            flash.alert = "No Tenants Found"
+          else
+            @tenants = current_user.tenants
+          end
+
+            #  @tenants = Tenant.all
+        # @tenants = current_user.tenants
+        
     end
 
     def new 
-        @tenant = Tenant.new
+        @tenant= Tenant.new
         @user = current_user
+        # binding.pry
     end
 
     def create
-    
-         @tenant = current_user.tenants.build(tenant_params)
+        @tenant = current_user.tenants.build(tenant_params)
         #  binding.pry
          if @tenant.valid?
             @tenant.save
@@ -30,8 +33,7 @@ class TenantsController < ApplicationController
     end
 
     def show 
-        #   @rental_property = RentalProperty.find(params[:id])
-         @tenant = Tenant.find(params[:id])
+        @tenant = Tenant.find(params[:id])
     end
 
     def edit
@@ -60,7 +62,7 @@ class TenantsController < ApplicationController
 
     def tenant_params
         params.require(:tenant).permit(:renter, :co_renter, 
-        :address, :renter_email, :co_renter_email, :renter_cell_phone, :co_renter_cell_phone)
+        :address, :renter_email, :co_renter_email, :renter_cell_phone, :co_renter_cell_phone, :user_id)
     end
 
     def set_tenants

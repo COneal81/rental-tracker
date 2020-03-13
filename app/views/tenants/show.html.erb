@@ -2,7 +2,7 @@
     <div class="grid-item">
         <h3> Tenant Profile for: <%= @tenant.renter %> </h3>
          <% @tenant.rental_properties.each do |rental| %> 
-            <strong> Renting Property: </strong><%= rental.property_name %><br>
+            <strong> Renting Property: </strong><%=rental.property_name %><br>
             <strong> Property Address: </strong><%= rental.address %><br><br>
          <% end %>
         
