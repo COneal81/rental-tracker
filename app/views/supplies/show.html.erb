@@ -1,1 +1,25 @@
-<h1>Show Supplies</h1>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+        <%= button_to "All Supplies", supplies_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+        <%= button_to "Add Supply", new_supply_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;<br><br>
+    </div>
+
+    <div class="container">
+    <div class="card-deck mb-1 text-left">
+        <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+            <h4 class="my-1 font-weight-normal"><h4>Supply</h4>
+    </div>
+
+    <div class="card-body">
+        <ul class="list-unstyled mt-3 mb-4">
+            <ul>
+                <li><strong> Supply: </strong><%= @supply.supply_name %></li>
+            </ul>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <%= button_to "Edit", supply_path(@supply), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+            <%= button_to "Delete",supply_path(@supply), :method=> "delete", class: "btn btn-secondary btn-sm" %>&nbsp;
+        </div>
+</div>
+    

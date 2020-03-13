@@ -3,5 +3,5 @@ class Supply < ApplicationRecord
      # has_many :users, through: :rental_properties - changed when adding supplies
 
      belongs_to :user
-     belongs_to :repair
+     belongs_to :repair, optional: true
 end
