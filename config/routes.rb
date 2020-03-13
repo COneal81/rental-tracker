@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end 
 
   resources :users, only: [:new, :create, :show]
-
+  resources :supplies
   resources :tenants
   resources :repairs
   resources :rental_properties do 
