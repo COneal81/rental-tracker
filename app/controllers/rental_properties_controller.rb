@@ -37,7 +37,7 @@ class RentalPropertiesController < ApplicationController
             @rental_property.save
             
             flash.notice = "#{@rental_property.property_name} was added."
-            redirect_to rental_property_path(@rental_property)
+            redirect_to user_rental_property_path(@rental_property.user.id, @rental_property)
         else 
             @user = current_user
             render :new
@@ -50,6 +50,7 @@ class RentalPropertiesController < ApplicationController
     def show 
        
         @rental_property = RentalProperty.find(params[:id])
+        # @user = User.find(params[:id])
         # @tenant = Tenant.find(params[:id])
         # binding.pry
         

@@ -21,6 +21,7 @@ class TenantsController < ApplicationController
     end
 
     def create
+         binding.pry
         @tenant = current_user.tenants.build(tenant_params)
         #  binding.pry
          if @tenant.valid?
@@ -28,6 +29,7 @@ class TenantsController < ApplicationController
             flash.notice = "#{@tenant.renter} was added."
             redirect_to tenant_path(@tenant)
        else
+            @user = current_user
             render :new
        end
     end
