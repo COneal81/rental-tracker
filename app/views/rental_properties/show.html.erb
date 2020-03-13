@@ -1,9 +1,11 @@
 <div class="btn-group" role="group" aria-label="Basic example">
  <% if @rental_property.tenant.present? %>
-  <%= button_to "Current Tenant", rental_property_tenant_path(@rental_property.tenant), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+ 
+  <%= button_to "Current Tenant", {:controller => "tenants", :action => "show", :id => @rental_property.tenant.id, :rental_property_id => @rental_property.id }, :method=> "get", class: "btn btn-secondary btn-sm"%> &nbsp;  
+  
   <%end%>
    <% if @rental_property.tenant.present? %>
-  <%= button_to "New Tenant", new_rental_property_tenant_path(@rental_property.tenant), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+  <%= button_to "New Tenant", new_tenant_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
   <%end%>
   <%= button_to "New Repair", new_rental_property_repair_path(@rental_property.repairs), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
   <%= button_to "Repairs", property_repairs_path(@rental_property), :method=> "get", class: "btn btn-secondary btn-sm"%>
@@ -23,24 +25,24 @@
             <li><strong>Square Feet:</strong> <%= @rental_property.square_feet %></li><br><br>
 
           <h4>Property Lease Details</h4>
-            <li><strong>Leased:</strong> <%= leased_boolean_display(@rental_property.leased) %></li><br>
+            <li><strong>Leased:</strong> <%= boolean_display(@rental_property.leased) %></li><br>
             <li><strong>Current Tenant:</strong> <% if @rental_property.tenant.present? %>
-              <%= link_to @rental_property.tenant.renter, rental_property_tenant_path(@rental_property) %><%end%></li><br>
+            <%= link_to @rental_property.tenant.renter, {:controller => "tenants", :action => "show", :id => @rental_property.tenant.id, 
+              :rental_property_id => @rental_property.id }, :method=> "get"%> &nbsp;<%end%></li><br> 
             <li><strong>Monthly Rental Amount:</strong> $<%= @rental_property.monthly_rental_amount %></li><br> 
             <li><strong>Deposit Amount:</strong> $<%= @rental_property.deposit_amount %></li><br>
             <li><strong>Contract Start Date:</strong> <%= @rental_property.contract_start_date %></li><br> 
             <li><strong>Contract End Date:</strong> <%= @rental_property.contract_end_date %></li><br><br>
             
-          <h4>Tenant Info:</h4>
-            <li><strong>Renter Name:</strong> <%= @new_tenant.renter %> </li><br>
-            <li><strong>Co Renter Name:</strong> <%=@new_tenant.co_renter %> </li><br>
-            <li><strong>Previous Address:</strong> <%=@new_tenant.address %> </li><br>
-            <li><strong>Renter Email:</strong> <%=@new_tenant.renter_email%> </li><br>
-            <li><strong>Co Renter Email:</strong> <%=@new_tenant.co_renter_email %> </li><br>
-            <li><strong>Renter Cell Phone:</strong> <%=@new_tenant.renter_cell_phone %> </li><br>
-            <li><strong>Co Renter Cell Phone:</strong> <%=@new_tenant.co_renter_cell_phone %> </li><br>
-          
-
+          <h4>Tenant Info:</h4> 
+            <li><strong>Renter Name:</strong> <%= @rental_property.tenant.renter %></li><br> 
+            <li><strong>Co Renter Name:</strong> <%=@rental_property.tenant.co_renter %> </li><br> 
+            <li><strong>Previous Address:</strong> <%=@rental_property.tenant.address %> </li><br>
+            <li><strong>Renter Email:</strong> <%=@rental_property.tenant.renter_email%> </li><br> 
+            <li><strong>Co Renter Email:</strong> <%=@rental_property.tenant.co_renter_email %> </li><br> 
+            <li><strong>Renter Cell Phone:</strong> <%=@rental_property.tenant.renter_cell_phone %> </li><br> 
+            <li><strong>Co Renter Cell Phone:</strong> <%=@rental_property.tenant.co_renter_cell_phone %> </li><br>
+           
         </ul>
       </div>
         <div class="btn-group" role="group" aria-label="Basic example">
