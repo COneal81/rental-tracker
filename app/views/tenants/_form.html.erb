@@ -1,14 +1,14 @@
 <% if @tenant.errors.any? %>
   <div class="alert alert-danger" role="alert">
     <ul>
-    <% @tenant.errors.full_messages.each do |msg| %>
+      <% @tenant.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
     </ul>
   </div>
 <% end %>
 
-<div>
+    <div>
         <%= form_for(@tenant) do |f| %>
          <h6> * Field must be filled out. </h6><br>
 

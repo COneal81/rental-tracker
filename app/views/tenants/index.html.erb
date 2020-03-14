@@ -16,9 +16,9 @@
             <tr>
             <% @tenants.each do |tenant|%>
               <td><%= tenant.id %></td>
-              <td><%= link_to tenant.renter, tenant_path(tenant)%></td>
+              <td><%= link_to tenant.renter, tenant_path(tenant) %></td>
               <td><%= tenant.renter_cell_phone %> </td>
-              <td><%= tenant.renter_email%></td>
+              <td><%= tenant.renter_email %></td>
             </tr>
             <%end%>
           </tbody>
