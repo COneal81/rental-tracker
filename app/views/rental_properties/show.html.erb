@@ -1,10 +1,9 @@
 <div class="btn-group" role="group" aria-label="Basic example">
  <% if @rental_property.tenant.present? %>
- 
-  <%= button_to "Current Tenant", {:controller => "tenants", :action => "show", :id => @rental_property.tenant.id, :rental_property_id => @rental_property.id }, :method=> "get", class: "btn btn-secondary btn-sm"%> &nbsp;  
-  
+  <%= button_to "Current Tenant", {:controller => "tenants", :action => "show", :id => @rental_property.tenant.id, 
+    :rental_property_id => @rental_property.id }, :method=> "get", class: "btn btn-secondary btn-sm"%> &nbsp;  
   <%end%>
-   <% if @rental_property.tenant.present? %>
+  <% if @rental_property.tenant.present? %>
   <%= button_to "New Tenant", new_tenant_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
   <%end%>
   <%= button_to "New Repair", new_rental_property_repair_path(@rental_property.repairs), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
@@ -27,7 +26,7 @@
           <h4>Property Lease Details</h4>
             <li><strong>Leased:</strong> <%= boolean_display(@rental_property.leased) %></li><br>
             <li><strong>Current Tenant:</strong> <% if @rental_property.tenant.present? %>
-            <%= link_to @rental_property.tenant.renter, {:controller => "tenants", :action => "show", :id => @rental_property.tenant.id, 
+              <%= link_to @rental_property.tenant.renter, {:controller => "tenants", :action => "show", :id => @rental_property.tenant.id, 
               :rental_property_id => @rental_property.id }, :method=> "get"%> &nbsp;<%end%></li><br> 
             <li><strong>Monthly Rental Amount:</strong> $<%= @rental_property.monthly_rental_amount %></li><br> 
             <li><strong>Deposit Amount:</strong> $<%= @rental_property.deposit_amount %></li><br>
@@ -46,7 +45,6 @@
             <% else %>
               <p> This property is currently not being leased. </p>
             <% end %>
-           
         </ul>
       </div>
         <div class="btn-group" role="group" aria-label="Basic example">
