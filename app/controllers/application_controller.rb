@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
    
-
     helper_method :current_user, :logged_in?, :set_rental_properties
 
     private
@@ -16,4 +15,5 @@ class ApplicationController < ActionController::Base
     def set_rental_properties
         @rental_properties = current_user.rental_properties
     end
+    
 end

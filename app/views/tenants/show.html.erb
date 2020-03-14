@@ -1,27 +1,37 @@
-<div class="grid-container">
-    <div class="grid-item">
-        <h3> Tenant Profile for: <%= @tenant.renter %> </h3>
-         <% @tenant.rental_properties.each do |rental| %> 
-            <strong> Renting Property: </strong><%=rental.property_name %><br>
-            <strong> Property Address: </strong><%= rental.address %><br><br>
-         <% end %>
-        
-        
-        <h3> Renter Info: </h3>
-        <strong> Tenant Name: <%= @tenant.renter %> </strong><br>
-        <strong>Cell Phone:</strong> <%= @tenant.renter_cell_phone %><br>
-        <strong>Email:</strong> <%= @tenant.renter_email %><br>
-        <strong>Previous Address: </strong> <%= @tenant.address %> <br><br><br>
+<div class="btn-group" role="group" aria-label="Basic example">
+   <%= button_to "My Tenants", tenants_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+   <%= button_to "Add Tenant", new_tenant_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+</div><br>
+<br>
+<div class="container">
+  <div class="card-deck mb-1 text-left">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-1 font-weight-normal">Tenant Profile for:<%= @tenant.renter %> </h4>
+      </div>
+      <div class="card-body">
+        <ul class="list-unstyled mt-3 mb-4">
+        <h4> Renter Info: </h4>
+            <li><strong> Tenant Name: <%= @tenant.renter %> </strong></li><br>
+            <li><strong>Cell Phone:</strong> <%= @tenant.renter_cell_phone %></li><br>
+            <li><strong>Email:</strong> <%= @tenant.renter_email %></li><br>
+            <li><strong>Previous Address: </strong> <%= @tenant.address %></li><br><br><br>
 
         <h4> Co Renter Info: </h4>
-         <strong>Name:</strong> <%= @tenant.co_renter %><br>
-        <strong>Cell Phone:</strong> <%= @tenant.co_renter_cell_phone %><br>
-        <strong>Email:</strong> <%= @tenant.co_renter_email %><br><br>
+            <li><strong>Name:</strong> <%= @tenant.co_renter %></li><br>
+            <li><strong>Cell Phone:</strong> <%= @tenant.co_renter_cell_phone %></li><br>
+            <li><strong>Email:</strong> <%= @tenant.co_renter_email %></li><br><br><br>
+
+        <strong> Properties <%= "#{@tenant.renter}"%> has rented or is currently renting: </strong>
+         <% @tenant.rental_properties.each do |rental| %> 
+           <ul>
+            <li><%=link_to rental.property_name, rental_property_path(rental)%></li>
+            </ul>
+         <% end %>
     </div>
 
  <div class="btn-group" role="group" aria-label="Basic example">
-    <%= button_to "My Tenants", tenants_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
-    <%= button_to "Add Tenant", new_tenant_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
     <%= button_to "Edit ", edit_tenant_path(@tenant), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
-    <%= button_to "Delete ", tenant_path(@tenant), :method=> "delete", class: "btn btn-secondary btn-sm" %>
+    <%= button_to "Delete ", tenant_path(@tenant), :method=> "delete", class: "btn btn-secondary btn-sm" %><br>
+  </div>
   </div>

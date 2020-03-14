@@ -1,27 +1,41 @@
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= button_to "All Repairs", repairs_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+  <%= button_to "Add Another Repair", new_repair_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+</div>
+
+<br>
+<div class="container">
+  <div class="card-deck mb-1 text-left">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-1 font-weight-normal">Repair: <%= @repair.repair_name %> </h4>
+      </div>
+      <div class="card-body">
+        <ul class="list-unstyled mt-3 mb-4">
+
+
+
 <div class="grid-container">
   <div class="grid-item">
-    <h2> Repair: <%= @repair.repair_name %> </h2><br>
-      <strong>Property Name:</strong> <%= @repair.rental_property.property_name %><br><br>
-      <strong>Property Address:</strong> <%= @repair.rental_property.address %><br><br>
-      <strong>Description:</strong> <%= @repair.repair_description %><br><br>
-      <strong>Repair Cost:</strong> $<%= @repair.repair_cost %><br><br>
-      <strong>Repair Completed:</strong> <%= boolean_display(@repair.repair_completed) %><br><br> 
-      <strong>Supplies Needed:</strong> <%= %><br><br>
+    <h4> Repair Info: </h4><br>
+      <li><strong>Property Name:</strong> <%= @repair.rental_property.property_name %></li><br>
+      <li><strong>Property Address:</strong> <%= @repair.rental_property.address %></li><br>
+      <li><strong>Description:</strong> <%= @repair.repair_description %></li><br>
+      <li><strong>Repair Cost:</strong> $<%= @repair.repair_cost %></li><br>
+      <li><strong>Repair Completed:</strong> <%= boolean_display(@repair.repair_completed) %></li><br>
+
+    <h4>Supplies Needed:</h4><br>
       <%@repair.repair_supplies.each do |repair_supply|%>
       <ul>
         <li><%= repair_supply.supply.supply_name%></li>
       </ul>
         <% end %>
         <br><br>
-       
-
 </div>
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <%= button_to "All Repairs", repairs_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
-    <%= button_to "Add Another Repair", new_repair_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
+
+<div class="btn-group" role="group" aria-label="Basic example">    
     <%= button_to "Edit ", edit_repair_path(@repair), :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;
     <%= button_to "Delete ", repair_path(@repair), :method=> "delete", class: "btn btn-secondary btn-sm" %>
   </div>
-  <br>
-  <br>
+ 
 

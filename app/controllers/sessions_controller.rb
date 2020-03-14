@@ -1,9 +1,11 @@
 class SessionsController < ApplicationController
     helper_method :logged_in?
+
     def home 
         render 'sessions/new'
     end
     
+
     def new 
         if logged_in?
             redirect_to user_path(current_user)
@@ -22,9 +24,7 @@ class SessionsController < ApplicationController
         end
     end
 
-    
-    
-        
+
     def destroy
         if logged_in?
             session.clear
@@ -35,9 +35,7 @@ class SessionsController < ApplicationController
         end
     end
 
+
     private
-    
-    
-    
 
 end
