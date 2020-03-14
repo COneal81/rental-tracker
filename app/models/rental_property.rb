@@ -10,4 +10,7 @@ class RentalProperty < ApplicationRecord
         :square_feet, presence: true
 
     
+    scope :available_properties, -> {where(leased: false)}
+    scope :affordable_available_properties, -> {where(leased: false).where("monthly_rental_amount < 700")}
+
 end

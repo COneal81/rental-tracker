@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
    get 'users/:user_id/rental_properties/available_properties', to: 'rental_properties#available_properties', as: 'available_properties'
 
+   get 'users/:user_id/rental_properties/affordable_available_properties', to: 'rental_properties#affordable_available_properties', as: 'affordable_available_properties'
   resources :sessions, only: [:new, :create]
 
   resources :users do 
