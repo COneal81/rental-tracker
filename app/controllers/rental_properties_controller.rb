@@ -8,7 +8,8 @@ class RentalPropertiesController < ApplicationController
     end
 
     def available_properties
-            @rental_properties = RentalProperty.available_properties
+        # current_user = params[:user_id]
+            @rental_properties = RentalProperty.available_properties(current_user)
             # @rental_properties = current_user.rental_properties.where("leased = false", params[:leased])
             if @rental_properties.empty?
                 flash.alert = "You currently do not have any properties available to be leased."
@@ -16,9 +17,13 @@ class RentalPropertiesController < ApplicationController
     end
 
     def affordable_available_properties
-        @rental_properties = RentalProperty.affordable_available_properties
+        @rental_properties = RentalProperty.affordable_available_properties(current_user)
+        if @rental_properties.empty?
+            flash.alert = "You currently do not have any properties available to be leased."
+        end
+    # binding.pry
     end 
-    
+
     def new
          @rental_property = RentalProperty.new
         #  @new_tenant = Tenant.new
