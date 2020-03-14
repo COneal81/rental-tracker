@@ -1,14 +1,14 @@
 <% if @supply.errors.any? %>
   <div class="alert alert-danger" role="alert">
     <ul>
-    <% @supply.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
+      <% @supply.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>
 
-<div>
+    <div>
         <%= form_for(@supply) do |f| %>
         <h6> * Field must be filled out. </h6><br>
 
@@ -17,7 +17,6 @@
         <strong><font color="#990012">*</font> <%= f.label :supply_name %></strong>
         <%= f.text_field :supply_name, class:"form-control" %><br>
 
-       
         <%= f.submit submit_text %>
         <% end %>
     </div>
