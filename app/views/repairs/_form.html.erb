@@ -32,12 +32,11 @@
         <div class="checkboxes">
           <%= f.collection_check_boxes :supply_ids, Supply.all, :id, :supply_name %><br>
           <%= f.fields_for :supplies, repair.supplies.build do |supplies_fields|%>
-           </div><br><br>
-           <p>Enter a new supply here</p>
-           <strong><%= f.label :supply_name %></strong>
+        </div><br><br>
         
-            <%= supplies_fields.text_field :supply_name %> <br><br>
-           
+          <p>Enter a new supply here</p>
+          <strong><%= f.label :supply_name %></strong>
+          <%= supplies_fields.text_field :supply_name %> <br><br>
           <% end %>
 
         <%= f.submit submit_text %>
