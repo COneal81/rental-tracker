@@ -20,10 +20,13 @@ class RepairsController < ApplicationController
     def new 
         @repair = Repair.new
         @rental_property = current_user.rental_properties
+        @supplies = current_user.supplies
+        #  binding.pry
     end
 
     def create
        @repair = Repair.new(repair_params)
+       binding.pry
         if @repair.valid?
             @repair.save
             flash.notice = "#{@repair.repair_name} was added."
@@ -36,6 +39,7 @@ class RepairsController < ApplicationController
 
     def show 
         @repair = Repair.find(params[:id])
+        # binding.pry
     end
 
     def edit
@@ -45,6 +49,7 @@ class RepairsController < ApplicationController
 
     def update
         @repair = Repair.find(params[:id])
+        
         @repair.update(repair_params)
         if @repair.save
             flash.notice = "#{@repair.repair_name} was updated."
@@ -65,7 +70,8 @@ class RepairsController < ApplicationController
 
     def repair_params
         params.require(:repair).permit(:repair_name, :repair_needed, 
-        :repair_description, :repair_cost, :repair_completed, :rental_property_id)
+        :repair_description, :repair_cost, :repair_completed, :rental_property_id, supply_ids:[], 
+        supplies_attributes: [:supply_name])
     end
 
     def set_repair

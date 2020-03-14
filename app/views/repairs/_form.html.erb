@@ -25,7 +25,16 @@
         <%= f.text_field :repair_cost, class:"form-control" %><br>
        
         <strong><%= f.label :repair_completed %></strong>
-        <%= f.check_box :repair_completed, class:"form-control" %><br>
+        <%= f.check_box :repair_completed, class:"form-control" %><br><br>
+
+
+        <h4>Check or Add Supplies to bring for this ticket.</h4>
+        
+          <%= f.collection_check_boxes :supply_ids, Supply.all, :id, :supply_name %><br>
+          <%= f.fields_for :supplies, repair.supplies.build do |supplies_fields|%>
+           <strong><%= f.label :supply_name %></strong>
+            <%= supplies_fields.text_field :supply_name %> <br>
+          <% end %>
 
         <%= f.submit submit_text %>
     <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_13_213804) do
+ActiveRecord::Schema.define(version: 2020_03_14_132204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(version: 2020_03_13_213804) do
     t.integer "tenant_id"
   end
 
+  create_table "repair_supplies", force: :cascade do |t|
+    t.integer "repair_id"
+    t.integer "supply_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "repairs", force: :cascade do |t|
     t.string "repair_name"
     t.boolean "repair_needed", default: true
@@ -47,8 +54,6 @@ ActiveRecord::Schema.define(version: 2020_03_13_213804) do
     t.string "supply_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.integer "repair_id"
   end
 
   create_table "tenants", force: :cascade do |t|

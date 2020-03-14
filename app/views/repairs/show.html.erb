@@ -6,6 +6,15 @@
       <strong>Description:</strong> <%= @repair.repair_description %><br><br>
       <strong>Repair Cost:</strong> $<%= @repair.repair_cost %><br><br>
       <strong>Repair Completed:</strong> <%= boolean_display(@repair.repair_completed) %><br><br> 
+      <strong>Supplies Needed:</strong> <%= %><br><br>
+      <%@repair.repair_supplies.each do |repair_supply|%>
+      <ul>
+        <li><%= repair_supply.supply.supply_name%></li>
+      </ul>
+        <% end %>
+        <br><br>
+       
+
 </div>
   <div class="btn-group" role="group" aria-label="Basic example">
     <%= button_to "All Repairs", repairs_path, :method=> "get", class: "btn btn-secondary btn-sm" %>&nbsp;

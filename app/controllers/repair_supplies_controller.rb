@@ -1,0 +1,2 @@
+class RepairSuppliesController < ApplicationController
+end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :repair_supplies
   root to: 'sessions#new'
   
   get '/logout', to: 'sessions#destroy'
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
   end 
 
   resources :users, only: [:new, :create, :show]
-  resources :supplies
+  resources :supplies, only:[:index, :new, :create, :show]
   resources :tenants
   resources :repairs
   resources :rental_properties do 
