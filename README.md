@@ -1,24 +1,25 @@
-# README
+# Rental Property Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rental Property Tracker is an application that organizes and helps you keep track of your rental properties, tenants, and repairs associated with your rental properties.
 
-Things you may want to cover:
+This is a portfolio project for the Rails section of the Flatiron School's Web Development Online program.
 
-* Ruby version
 
-* System dependencies
+# Getting Started
 
-* Configuration
+1. To get started with the app, clone the repo and then install the needed gems:
+$ bundle install
 
-* Database creation
+2. Next, migrate the database:
+$ rake db:migrate
 
-* Database initialization
+3. Then run the app in a local server:
+$ rails server
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+# Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/COneal81/rental-tracker
 
-* Deployment instructions
 
-* ...
+# License
+All source code in the is available jointly under the MIT License. See LICENSE.md for details.
