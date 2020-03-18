@@ -15,5 +15,12 @@ class ApplicationController < ActionController::Base
     def set_rental_properties
         @rental_properties = current_user.rental_properties
     end
+
+    def require_login
+        unless logged_in?
+            flash[:alert] = "Please login to view this page."
+            redirect_to root_path
+        end
+    end
     
 end

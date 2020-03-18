@@ -1,5 +1,5 @@
 class SuppliesController < ApplicationController
-    before_action :current_user, :logged_in?, :set_rental_properties
+    before_action :current_user, :logged_in?, :require_login, :set_rental_properties
     before_action :find_supply, only: [:show]
     
 

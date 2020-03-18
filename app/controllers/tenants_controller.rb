@@ -1,5 +1,5 @@
 class TenantsController < ApplicationController  
-    before_action :current_user, :logged_in?, :set_rental_properties, :set_tenants
+    before_action :current_user, :logged_in?, :require_login, :set_rental_properties, :set_tenants
     before_action :find_tenant, only: [:show, :edit, :update, :destroy]
 
     def index

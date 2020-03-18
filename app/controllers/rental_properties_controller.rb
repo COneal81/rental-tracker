@@ -1,5 +1,5 @@
 class RentalPropertiesController < ApplicationController
-    before_action :current_user, :logged_in?, :set_rental_properties
+    before_action :current_user, :logged_in?, :require_login, :set_rental_properties
     before_action :find_rental_property, only: [:show, :edit, :update, :destroy]
 
     def index

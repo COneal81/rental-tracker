@@ -1,5 +1,5 @@
 class RepairsController < ApplicationController
-    before_action :current_user, :logged_in?, :set_repair, :set_rental_properties
+    before_action :current_user, :logged_in?, :require_login, :set_repair, :set_rental_properties
     before_action :find_repair, only: [:show, :edit, :update, :destroy]
 
     def index
