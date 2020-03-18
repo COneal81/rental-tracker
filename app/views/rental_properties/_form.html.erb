@@ -46,7 +46,7 @@
 
         <h4> Select Tenant </h4>
         <%= f.collection_select :tenant_id, current_user.tenants.order(:renter), 
-        :id, :renter  , include_blank: true %> <br><br>
+        :id, :renter  , include_blank: "No Tenant"%> <br><br>
 
         <%= f.hidden_field :user_id, :value => @user.id %>
        

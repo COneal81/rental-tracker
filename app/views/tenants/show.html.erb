@@ -22,7 +22,7 @@
             <li><strong>Cell Phone:</strong> <%= @tenant.co_renter_cell_phone %></li><br>
             <li><strong>Email:</strong> <%= @tenant.co_renter_email %></li><br><br><br>
 
-        <strong> Properties <%= "#{@tenant.renter}"%> has rented or is currently renting: </strong>
+        <strong> Properties <%= "#{@tenant.renter}"%> is currently renting: </strong>
          <% @tenant.rental_properties.each do |rental| %> 
            <ul>
             <li><%=link_to rental.property_name, rental_property_path(rental)%></li>

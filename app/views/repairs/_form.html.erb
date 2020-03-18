@@ -10,10 +10,11 @@
 
 <div>
     <%= form_for(@repair) do |f| %>
-        <h4> Select Property </h4>
         <h6> * Field must be filled out. </h6><br>
+        <h4> Select Property </h4>
+        
         <font color="#990012">*</font> <%= f.collection_select :rental_property_id, @rental_property.order(:property_name), 
-        :id, :property_name, include_blank: true %> <br><br>
+        :id, :property_name, include_blank: "Select Property" %> <br><br>
         
         <strong><font color="#990012">*</font> <%= f.label :repair_name %></strong>
         <%= f.text_field :repair_name, class:"form-control" %><br>
