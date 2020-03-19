@@ -48,7 +48,7 @@ Specs:
         ~ ex. users/21/rental_properties/new
 
 - [x] Include form display of validation errors (form URL e.g. /recipes/new)
-        ~ ??????????????????????????
+       
 Confirm:
 - [x] The application is pretty DRY
 - [x] Limited logic in controllers

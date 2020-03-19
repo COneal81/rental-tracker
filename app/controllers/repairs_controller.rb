@@ -30,6 +30,7 @@ class RepairsController < ApplicationController
 
     def create
        @repair = Repair.new(repair_params)
+    #   binding.pry
         if @repair.valid?
             @repair.save
             flash.notice = "#{@repair.repair_name} was added."
