@@ -8,7 +8,7 @@ class Repair < ApplicationRecord
 
     def supplies_attributes=(supply_attributes)
         supply_attributes.values.each do |supply_attribute|
-            unless supply_attribute.blank?
+            if supply_attribute == !nil?
                 supply = Supply.find_or_create_by(supply_attribute)        
                 self.supplies << supply
             end
