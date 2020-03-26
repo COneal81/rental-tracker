@@ -16,13 +16,11 @@
           <tbody>
             <tr>
             <%@repairs.each do |repair|%>
-            <%if repair.repair_completed == false %>
               <td><%= repair.id %></td>
               <td><%= link_to repair.repair_name, repair_path(repair) %>
               <td><%= repair.rental_property.property_name %></td>
               <td><%= repair.rental_property.address %></td>
               <td><%= repair.repair_cost %> </td>
-            <%end%>
             </tr>
             <%end%>
           </tbody>

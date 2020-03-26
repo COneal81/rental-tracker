@@ -6,6 +6,7 @@ class Repair < ApplicationRecord
     accepts_nested_attributes_for :supplies
     validates :repair_name, :repair_description, :rental_property_id, presence: true
   
+    scope :open_ticket_repairs, -> {where(repair_completed: false)}
 
     def supplies_attributes=(supply_attributes)
         supply_attributes.values.each do |supply_attribute|
