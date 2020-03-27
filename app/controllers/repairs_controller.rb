@@ -17,8 +17,7 @@ class RepairsController < ApplicationController
     end
 
 
-    def index_open_ticket_repairs
-        @repairs = Repair.open_ticket_repairs 
+    def open_ticket_repairs
     end
 
 
